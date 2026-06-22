@@ -308,6 +308,15 @@ dl {
   height: 36px;
 }
 
+.top-icons .lang-toggle {
+  width: auto;
+  gap: 6px;
+  padding: 0 9px;
+  color: #344054;
+  font-size: 12px;
+  font-weight: 740;
+}
+
 .top-icons b {
   position: absolute;
   top: 2px;
@@ -473,6 +482,38 @@ dl {
   color: #1e3a8a;
   background: #eff6ff;
   font-size: 13px;
+}
+
+.empty-workspace,
+.rail-empty {
+  display: grid;
+  gap: 12px;
+  place-items: center;
+  border: 1px dashed var(--border-strong);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 28px;
+  color: var(--muted);
+  background: var(--surface);
+  text-align: center;
+}
+
+.empty-workspace h2,
+.rail-empty h2 {
+  color: var(--text);
+  font-size: 18px;
+}
+
+.empty-workspace p,
+.rail-empty p {
+  max-width: 520px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.empty-workspace div {
+  display: flex;
+  gap: 10px;
 }
 
 .notice span {
@@ -765,6 +806,12 @@ dl {
   font-weight: 740;
 }
 
+.table-empty {
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center !important;
+}
+
 .lower-grid {
   display: grid;
   grid-template-columns: 1fr 1.05fr 1.05fr 0.9fr;
@@ -949,6 +996,12 @@ dl {
 .domain-list b {
   color: var(--muted);
   font-size: 11px;
+}
+
+.mini-empty {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .gate-row {
@@ -1380,6 +1433,11 @@ dl {
   color: #344054;
   font-size: 12px;
   font-weight: 720;
+}
+
+.modal-form {
+  display: grid;
+  gap: 14px;
 }
 
 .modal input,

@@ -18,6 +18,8 @@ It is a React + Vite app that includes:
 - Project-driven person-day allocation
 - Work item detail rail, comments, status updates, and new item modal
 - Weekly steering, BCPF distribution, upcoming gates, and capacity calendar previews
+- Clean initialization with no bundled internal reference data
+- English / Chinese UI switching from the top-right toolbar
 
 ## Netlify
 
