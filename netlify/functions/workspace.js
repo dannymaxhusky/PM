@@ -14,9 +14,22 @@ function json(statusCode, body) {
 
 export async function handler(event) {
   const key = event.queryStringParameters?.key || "default";
-  const db = getDatabase();
 
   try {
+    const connectionString =
+      process.env.NETLIFY_DATABASE_URL ||
+      process.env.NETLIFY_DATABASE_CONNECTION_STRING ||
+      process.env.DATABASE_URL ||
+      process.env.POSTGRES_URL;
+    const db = connectionString ? getDatabase({ connectionString }) : getDatabase();
+
+    if (event.queryStringParameters?.health === "1") {
+      return json(200, {
+        ok: true,
+        hasExplicitConnectionString: Boolean(connectionString),
+      });
+    }
+
     if (event.httpMethod === "GET") {
       const rows = await db.sql`
         SELECT data, updated_at
@@ -42,6 +55,9 @@ export async function handler(event) {
 
     return json(405, { error: "Method not allowed" });
   } catch (error) {
-    return json(500, { error: error.message });
+    return json(500, {
+      error: error.message,
+      hint: "Netlify Database is not available to this function runtime. Ensure the production database is provisioned and a connection string is exposed to the function as NETLIFY_DATABASE_URL or DATABASE_URL.",
+    });
   }
 }
