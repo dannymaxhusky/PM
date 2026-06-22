@@ -1,0 +1,7 @@
+node_modules
+dist
+.netlify
+.env
+.env.*
+*.log
+_local_reference_backup_*
