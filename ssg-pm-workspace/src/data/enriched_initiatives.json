@@ -1,0 +1,2175 @@
+{
+  "program": "EaaS Phase II",
+  "fiscal_year": "FY26-27",
+  "summary": {
+    "Total Budget": 23050000,
+    "Total Committed (Above the Line)": 29705108,
+    "Total Asked (All Initiatives)": 40208158,
+    "Remaining": -6655108
+  },
+  "initiatives": [
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "M&S",
+      "item_code": "1-1",
+      "initiative": "Capex to Opex, Multi-Country MLA Adoption",
+      "description": "Providing Opex Price Options instantly based on Capex Quote, and Converting Capex Deal into Opex Deal with Simple Click",
+      "budget": 440000,
+      "status": "Above the Line",
+      "sponsors": "Andrej, Linda",
+      "dt_owners": "Cliff",
+      "biz_owner": "Andrej Durasinovic",
+      "dt_owner_initiative": "Ryan Park",
+      "business_benefit": "Eliminates manual Capex-to-Opex conversion steps, enabling sales reps to instantly offer Opex pricing from any Capex quote and convert deals in one click. Drives EaaS adoption by reducing deal cycle time by ~60% for multi-country MLA scenarios.",
+      "kpi": "Capex-to-Opex conversion time: 5 days → <4 hours; Multi-country MLA quote accuracy: >99%; EaaS adoption rate uplift: +15% within 6 months of go-live",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-09",
+        "SIT": "2026-10",
+        "KUT": "2026-11",
+        "UAT": "2026-12",
+        "GRR": "2027-01",
+        "Go_live": "2027-01"
+      },
+      "change_point_from": "Sales reps manually re-key Capex deal data into separate Opex pricing tools, requiring multiple system logins and manual calculations to generate an Opex alternative. Multi-country MLA scenarios require offline spreadsheet workarounds.",
+      "change_point_to": "D365 automatically presents Opex pricing options alongside any Capex quote. A single click converts the Capex deal to an Opex structure with pre-validated multi-country MLA terms, triggering downstream contract and billing setup automatically.",
+      "bcpf_l3_detail": "Extends D365 CPQ module to support dual Capex/Opex pricing presentation on a single quote, with automated MLA term validation across country entities. Integrates with CLM (Lithium) for contract initiation and Odessa for billing schedule setup upon conversion.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Order Management",
+      "bcpf_l2": "Order Capture & Configuration",
+      "bcpf_l3": "EaaS Capex-to-Opex Conversion & MLA Multi-Country Quoting",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 15,
+          "duration_months": 8
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 10,
+          "duration_months": 10
+        },
+        {
+          "role": "BA",
+          "monthly_days": 12,
+          "duration_months": 6
+        },
+        {
+          "role": "QA",
+          "monthly_days": 10,
+          "duration_months": 4
+        },
+        {
+          "role": "CM Lead",
+          "monthly_days": 8,
+          "duration_months": 5
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "M&S",
+      "item_code": "1-2",
+      "initiative": "IaaS E2E Adoption",
+      "description": "Shorten Lead Time to Quote, and Convert IaaS Subscription Quote into Pricing Contract Systematically with Reduced Effort",
+      "budget": 300000,
+      "status": "Above the Line",
+      "sponsors": "Andrej, Linda",
+      "dt_owners": "Cliff",
+      "biz_owner": "Sunil Garimella, Lynn Scott",
+      "dt_owner_initiative": "Michael Karchov, Chris Cui",
+      "business_benefit": "Shortens IaaS subscription quote-to-contract lead time from weeks to days by automating the conversion of IaaS subscription quotes into binding pricing contracts. Reduces manual effort by 70% and enables systematic IaaS adoption across the sales organization.",
+      "kpi": "IaaS quote-to-contract lead time: 15 days → 3 days; Manual data entry effort per contract: -70%; IaaS deal volume processed systematically: 90% by Q4 FY27",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-11",
+        "KUT": "2026-12",
+        "UAT": "2027-01",
+        "GRR": "2027-02",
+        "Go_live": "2027-02"
+      },
+      "change_point_from": "IaaS subscription quotes are manually converted to pricing contracts by finance teams using offline templates, requiring 3-5 handoffs between Sales, Finance, and Legal with significant rework due to data inconsistency.",
+      "change_point_to": "D365 automatically converts validated IaaS subscription quotes into pricing contracts with pre-populated terms, pricing, and approval workflows. Finance reviews are triggered automatically with a digital audit trail.",
+      "bcpf_l3_detail": "Automates the D365 quote-to-contract transformation for IaaS subscription models, including automated pricing validation, approval routing, and CLM system handoff. Connects to Odessa for billing schedule creation upon contract execution.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Order Management",
+      "bcpf_l2": "Contract Management & Pricing",
+      "bcpf_l3": "IaaS Subscription Quote-to-Contract Automation",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 7
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 8,
+          "duration_months": 8
+        },
+        {
+          "role": "BA",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "M&S",
+      "item_code": "1-3",
+      "initiative": "I&C / Rebate Carryover",
+      "description": "Automating I&C Calculation and Reduce Data",
+      "budget": 250000,
+      "status": "Above the Line",
+      "sponsors": "Andrej, Linda",
+      "dt_owners": "Cliff",
+      "biz_owner": "Mary Goodwin, Rebecca Liang",
+      "dt_owner_initiative": "Niv Palmeros Amar, Chris Cui",
+      "business_benefit": "Automates I&C (Incentive & Compensation) calculation and rebate carryover processes, eliminating manual spreadsheet-based calculations that currently take 3+ days per period and carry significant error risk.",
+      "kpi": "I&C calculation cycle time: 3 days → 4 hours; Calculation error rate: <0.5%; Rebate carryover processing effort: -80%",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-11",
+        "KUT": "2026-12",
+        "UAT": "2027-01",
+        "GRR": "2027-01",
+        "Go_live": "2027-02"
+      },
+      "change_point_from": "I&C calculations and rebate carryover are performed manually using complex Excel models, with data pulled from multiple systems (D365, SAP) and reconciled offline. Month-end close is frequently delayed by calculation errors.",
+      "change_point_to": "Automated I&C engine in D365 calculates incentives and carryover amounts nightly, with self-service dashboards for sales and finance teams. Rebate carryover is tracked and applied automatically to subsequent periods.",
+      "bcpf_l3_detail": "Builds an automated I&C calculation engine within D365 F&O, consuming sales transaction data to compute incentives per policy rules. Rebate carryover balances are maintained as system records and automatically applied, with audit trails for Finance review.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Financial Management",
+      "bcpf_l2": "Incentive & Rebate Management",
+      "bcpf_l3": "Automated I&C Calculation & Rebate Carryover Processing",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 6
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 8,
+          "duration_months": 7
+        },
+        {
+          "role": "BA",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "M&S",
+      "item_code": "1-4",
+      "initiative": "Enable New CLM Request Directly from D365 Opportunity",
+      "description": "Better UX and Simpler Process to Initiate CLM Request - To check with Lithium CLM requirements that Phil is working on",
+      "budget": 50000,
+      "status": "Above the Line",
+      "sponsors": "Andrej, Linda",
+      "dt_owners": "Cliff",
+      "biz_owner": "Hunter Dawson, Phil Hadfield",
+      "dt_owner_initiative": "Anu Paliwal",
+      "business_benefit": "Simplifies CLM contract request initiation by enabling sales reps to trigger new CLM requests directly from a D365 Opportunity record, reducing process steps from 6 to 2 and eliminating context-switching between systems.",
+      "kpi": "CLM request initiation time: 45 min → 5 min; D365-to-CLM data re-entry errors: 0; Sales rep adoption of D365-native CLM: >85%",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-09",
+        "SIT": "2026-09",
+        "KUT": "2026-10",
+        "UAT": "2026-10",
+        "GRR": "2026-11",
+        "Go_live": "2026-11"
+      },
+      "change_point_from": "Sales reps manually copy opportunity data from D365 into the CLM system (Lithium) to initiate contract requests, requiring system switching, manual data entry, and error-prone copy-paste.",
+      "change_point_to": "A 'Create CLM Request' action in D365 Opportunity pre-populates all contract request fields from the opportunity record and submits directly to CLM with a single click, with status sync back to D365.",
+      "bcpf_l3_detail": "Implements a D365 action button that maps opportunity fields (customer, products, pricing, terms) to CLM request schema and submits via Lithium CLM API. Status updates from CLM flow back to the D365 opportunity timeline for full visibility.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Customer Management",
+      "bcpf_l2": "Contract Lifecycle Management",
+      "bcpf_l3": "D365 Opportunity-to-CLM Request Integration",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 8,
+          "duration_months": 3
+        },
+        {
+          "role": "BA",
+          "monthly_days": 6,
+          "duration_months": 2
+        },
+        {
+          "role": "QA",
+          "monthly_days": 5,
+          "duration_months": 2
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "M&S",
+      "item_code": "1-9",
+      "initiative": "Sales Strategy & PMO - Alliance Partner identification",
+      "description": "Enable end-to-end orchestration of complex deal workflows by evaluating and implementing a fit-for-purpose solution",
+      "budget": 10000,
+      "status": "Above the Line",
+      "sponsors": "Andrej, Linda",
+      "dt_owners": "Cliff",
+      "biz_owner": "David Pluss",
+      "dt_owner_initiative": "Ryan Park",
+      "business_benefit": "Identifies and onboards alliance partners for complex deal orchestration, enabling systematic partner engagement and reducing dependency on ad-hoc partner coordination.",
+      "kpi": "Alliance partners identified and evaluated: ≥5; Partner onboarding time: <30 days; Complex deal workflow automation readiness: solution selected by Q2 FY27",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-09",
+        "SIT": "2026-10",
+        "KUT": "2026-10",
+        "UAT": "2026-11",
+        "GRR": "2026-11",
+        "Go_live": "2026-12"
+      },
+      "change_point_from": "Alliance partner identification and engagement is handled ad-hoc by individual sales and PMO teams without a standardized process or tooling for complex deal workflow orchestration.",
+      "change_point_to": "A defined alliance partner identification framework with evaluation criteria is established, supported by a fit-for-purpose workflow orchestration solution selected and configured for complex EaaS deals.",
+      "bcpf_l3_detail": "Defines partner evaluation criteria and runs a solution assessment process for complex deal workflow orchestration tools. Output is a selected vendor/solution with implementation roadmap integrated into the EaaS deal management process.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Partner Management",
+      "bcpf_l2": "Alliance Partner Identification & Onboarding",
+      "bcpf_l3": "Complex Deal Workflow Orchestration Partner Enablement",
+      "resource_plan": [
+        {
+          "role": "DT PM",
+          "monthly_days": 5,
+          "duration_months": 3
+        },
+        {
+          "role": "BA",
+          "monthly_days": 4,
+          "duration_months": 2
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "M&S",
+      "item_code": "1-5",
+      "initiative": "Complex Solution Management - PMS",
+      "description": "Integrated Solution Sales Management with Virtual Team. Providing Consolidated Status and Workflow to Reduce Lead Time for Sales",
+      "budget": 1000000,
+      "status": "Below the Line",
+      "sponsors": "Andrej, Linda",
+      "dt_owners": "Cliff",
+      "biz_owner": "Corey Williamson, Rachel Thomas",
+      "dt_owner_initiative": "Ryan Park",
+      "business_benefit": "Provides consolidated visibility and integrated workflow management for complex multi-product, multi-team EaaS deals via the PMS (Partner Management System). Reduces sales cycle lead time by 30% and eliminates status reporting overhead for virtual deal teams.",
+      "kpi": "Complex deal lead time reduction: 30%; Status reporting effort per deal: -60%; Deal team collaboration score: >4.0/5.0; PMS adoption by deal leads: >80%",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-10",
+        "SIT": "2027-01",
+        "KUT": "2027-02",
+        "UAT": "2027-03",
+        "GRR": "2027-04",
+        "Go_live": "2027-05"
+      },
+      "change_point_from": "Complex EaaS deals involving multiple business units are managed through fragmented tools (email, SharePoint, spreadsheets). No single source of truth exists for deal status, team assignments, or milestone tracking across virtual teams.",
+      "change_point_to": "PMS provides a unified workspace for complex deal management with integrated task tracking, milestone visibility, team communication, and automated status reporting. Deal leads have real-time dashboards across all open complex deals.",
+      "bcpf_l3_detail": "Implements PMS as the system of record for complex EaaS deals, integrating with D365 for opportunity data, ServiceNow for workflow tasks, and SharePoint for document management. Automated status rollups and escalation alerts reduce manual PMO reporting burden.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Order Management",
+      "bcpf_l2": "Complex Deal Management",
+      "bcpf_l3": "Integrated Complex Solution Sales Management Platform",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 20,
+          "duration_months": 10
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 15,
+          "duration_months": 12
+        },
+        {
+          "role": "IT Lead",
+          "monthly_days": 12,
+          "duration_months": 8
+        },
+        {
+          "role": "BA",
+          "monthly_days": 15,
+          "duration_months": 8
+        },
+        {
+          "role": "QA",
+          "monthly_days": 12,
+          "duration_months": 5
+        },
+        {
+          "role": "CM Lead",
+          "monthly_days": 10,
+          "duration_months": 6
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "M&S",
+      "item_code": "1-7",
+      "initiative": "Automate KPIs calculation/tracking for IaaS deals",
+      "description": "Automate tracking of key metrics for Sales Cycle/CPQC activities, EaaS adoption",
+      "budget": 350000,
+      "status": "Below the Line",
+      "sponsors": "Andrej, Linda",
+      "dt_owners": "Cliff",
+      "biz_owner": "Gerald Longoria",
+      "dt_owner_initiative": "Michael Karchov",
+      "business_benefit": "Automates KPI tracking for IaaS deals across Sales Cycle and CPQC (Configure, Price, Quote, Contract) activities, replacing manual data pulls with real-time dashboards and eliminating 8+ hours of weekly reporting effort per sales manager.",
+      "kpi": "KPI reporting effort: -80%; KPI data freshness: real-time (vs. weekly); Sales manager dashboard adoption: >90%; IaaS adoption KPI accuracy: >99%",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-12",
+        "KUT": "2027-01",
+        "UAT": "2027-02",
+        "GRR": "2027-02",
+        "Go_live": "2027-03"
+      },
+      "change_point_from": "Sales managers manually extract and consolidate KPI data from D365, Excel, and other systems weekly to track IaaS deal metrics. Reporting is inconsistent, delayed, and prone to errors.",
+      "change_point_to": "Automated KPI dashboards in Power BI/D365 provide real-time visibility into IaaS sales cycle metrics, CPQC activity rates, and EaaS adoption indicators. Alerts trigger automatically when KPIs deviate from targets.",
+      "bcpf_l3_detail": "Builds automated data pipelines from D365 and related systems into Power BI dashboards for IaaS KPI tracking. Metrics include quote conversion rates, pricing cycle times, contract execution speed, and EaaS adoption by region and product line.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Performance Management",
+      "bcpf_l2": "Sales KPI Monitoring & Reporting",
+      "bcpf_l3": "IaaS Deal KPI Automation & CPQC Activity Tracking",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 7
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 8,
+          "duration_months": 8
+        },
+        {
+          "role": "BA",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "M&S",
+      "item_code": "1-8",
+      "initiative": "Capabilities to calculate IaaS Budgetary estimates",
+      "description": "Enable automation for calculating budgetary pricing estimates",
+      "budget": 270000,
+      "status": "Below the Line",
+      "sponsors": "Andrej, Linda",
+      "dt_owners": "Cliff",
+      "biz_owner": "Gerald Longoria",
+      "dt_owner_initiative": "Michael Karchov",
+      "business_benefit": "Enables automated calculation of budgetary pricing estimates for IaaS deals, reducing the time to produce accurate estimates from days to minutes and improving early-stage deal qualification.",
+      "kpi": "Budgetary estimate generation time: 2 days → 15 minutes; Estimate accuracy vs. final pricing: ±10%; Sales rep self-service estimate rate: >75%",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-11",
+        "SIT": "2026-12",
+        "KUT": "2027-01",
+        "UAT": "2027-02",
+        "GRR": "2027-02",
+        "Go_live": "2027-03"
+      },
+      "change_point_from": "IaaS budgetary pricing estimates are manually calculated by pricing specialists using reference tables and offline models, creating bottlenecks and 2-3 day delays in early deal stage customer conversations.",
+      "change_point_to": "Self-service budgetary estimate tool in D365 enables sales reps to generate IaaS pricing estimates instantly using configurable inputs, with automated validation against pricing rules and market rates.",
+      "bcpf_l3_detail": "Implements a D365-embedded budgetary pricing calculator for IaaS scenarios, using configured pricing models and rate tables. Outputs are stored against the opportunity for traceability and compared against final contract pricing for accuracy tracking.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Order Management",
+      "bcpf_l2": "Order Capture & Configuration",
+      "bcpf_l3": "IaaS Automated Budgetary Estimate Generation",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 6
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 8,
+          "duration_months": 7
+        },
+        {
+          "role": "BA",
+          "monthly_days": 8,
+          "duration_months": 5
+        },
+        {
+          "role": "QA",
+          "monthly_days": 6,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "M&S",
+      "item_code": "1-10",
+      "initiative": "Auto-update for Management node + software configs",
+      "description": "Maintain the configurations for Management node and management software up-to-date",
+      "budget": 330000,
+      "status": "Below the Line",
+      "sponsors": "Andrej, Linda",
+      "dt_owners": "Cliff",
+      "biz_owner": "Gerald Longoria",
+      "dt_owner_initiative": "Michael Karchov",
+      "business_benefit": "Automates the maintenance of management node and software configurations for EaaS devices, ensuring configurations remain current and reducing manual configuration management effort by 70%.",
+      "kpi": "Configuration currency rate: >98% (vs. ~60% manual); Manual config update effort: -70%; Configuration-related support incidents: -50%",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-12",
+        "KUT": "2027-01",
+        "UAT": "2027-02",
+        "GRR": "2027-02",
+        "Go_live": "2027-03"
+      },
+      "change_point_from": "Management node and software configurations are manually updated by operations teams using scripts and direct system access, resulting in configuration drift and inconsistent device states across the EaaS fleet.",
+      "change_point_to": "Automated configuration management pipeline detects and applies required updates to management nodes and software configurations on schedule, with change tracking and compliance reporting in ServiceNow.",
+      "bcpf_l3_detail": "Implements configuration-as-code pipeline integrated with ServiceNow CMDB to detect configuration drift and automatically remediate management node settings and software versions. Compliance dashboards provide real-time config health visibility.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Asset Management",
+      "bcpf_l2": "Device Configuration & Lifecycle Management",
+      "bcpf_l3": "Automated Management Node & Software Configuration Maintenance",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 7
+        },
+        {
+          "role": "IT Lead",
+          "monthly_days": 10,
+          "duration_months": 6
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 8,
+          "duration_months": 8
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "M&S",
+      "item_code": "1-11",
+      "initiative": "Automation of Financials/Invoicing/Customer Reporting",
+      "description": "Automating calculation of monthly billing amounts, residual value of POs and other financials",
+      "budget": 400000,
+      "status": "Below the Line",
+      "sponsors": "Andrej, Linda",
+      "dt_owners": "Cliff",
+      "biz_owner": "Gerald Longoria",
+      "dt_owner_initiative": "Michael Karchov",
+      "business_benefit": "Automates monthly billing calculation, residual value tracking, and customer financial reporting for EaaS contracts, reducing finance team effort by 65% and improving billing accuracy to >99.5%.",
+      "kpi": "Monthly billing calculation effort: -65%; Billing accuracy: >99.5% (from ~95%); Customer financial report turnaround: 1 day → same-day; PO residual tracking accuracy: 100%",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-10",
+        "SIT": "2026-12",
+        "KUT": "2027-02",
+        "UAT": "2027-03",
+        "GRR": "2027-04",
+        "Go_live": "2027-04"
+      },
+      "change_point_from": "Monthly billing amounts are manually calculated from multiple data sources (Odessa, SAP, D365) and reconciled by Finance, with customer reports prepared manually in Excel. PO residual values require manual tracking.",
+      "change_point_to": "Automated billing engine in Odessa calculates monthly amounts and feeds directly to SAP invoicing. Residual PO values and customer financial reports are generated automatically and published to customer portals.",
+      "bcpf_l3_detail": "Extends Odessa billing automation to cover all EaaS contract types, with SAP F&O integration for invoicing and customer portal integration for self-service financial reporting. PO residual value tracking is automated via Odessa contract events.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Financial Management",
+      "bcpf_l2": "Billing & Invoicing",
+      "bcpf_l3": "Automated EaaS Monthly Billing & Customer Financial Reporting",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 15,
+          "duration_months": 8
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 10,
+          "duration_months": 9
+        },
+        {
+          "role": "BA",
+          "monthly_days": 12,
+          "duration_months": 6
+        },
+        {
+          "role": "QA",
+          "monthly_days": 10,
+          "duration_months": 4
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Delivery",
+      "item_code": "3-1",
+      "initiative": "EOT E2E Visibility",
+      "description": "",
+      "budget": 150000,
+      "status": "Above the Line",
+      "sponsors": "Rakshit",
+      "dt_owners": "James",
+      "biz_owner": "Stephen Hui",
+      "dt_owner_initiative": "James Wang",
+      "business_benefit": "Provides end-to-end visibility into End-of-Term (EOT) processes, enabling proactive management of device returns, extensions, and remarketing decisions to maximize asset value recovery.",
+      "kpi": "EOT visibility coverage: 100% of active contracts; Proactive EOT actions initiated >90 days before expiry: >85%; Asset value recovery improvement: +10%",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-11",
+        "KUT": "2026-12",
+        "UAT": "2027-01",
+        "GRR": "2027-01",
+        "Go_live": "2027-02"
+      },
+      "change_point_from": "EOT status is tracked in multiple disconnected systems with no unified view, causing reactive responses to expiring contracts and missed remarketing windows.",
+      "change_point_to": "Unified EOT dashboard provides real-time visibility across all EaaS contracts approaching end-of-term, with automated notifications to customers and internal teams and workflow triggers for extension, return, or remarketing decisions.",
+      "bcpf_l3_detail": "Aggregates EOT data from Odessa, D365, and ServiceConnect into a Power BI dashboard with automated alerts. Integrates with the remarketing platform to trigger asset disposition workflows and with customer portals for extension option notifications.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Asset Management",
+      "bcpf_l2": "End-of-Term Management",
+      "bcpf_l3": "End-to-End EOT Visibility & Workflow Orchestration",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 8,
+          "duration_months": 6
+        },
+        {
+          "role": "BA",
+          "monthly_days": 8,
+          "duration_months": 4
+        },
+        {
+          "role": "QA",
+          "monthly_days": 6,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Delivery",
+      "item_code": "3-2",
+      "initiative": "UK Order to Ship",
+      "description": "",
+      "budget": 60000,
+      "status": "Above the Line",
+      "sponsors": "Rakshit",
+      "dt_owners": "James",
+      "biz_owner": "Stephen Hui",
+      "dt_owner_initiative": "James Wang",
+      "business_benefit": "Streamlines UK order-to-ship process by automating key fulfillment steps, reducing order processing time and improving on-time delivery rates for UK EaaS orders.",
+      "kpi": "UK order-to-ship cycle time: -30%; On-time delivery rate: >95%; Manual intervention per order: -50%",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-09",
+        "SIT": "2026-10",
+        "KUT": "2026-11",
+        "UAT": "2026-11",
+        "GRR": "2026-12",
+        "Go_live": "2026-12"
+      },
+      "change_point_from": "UK EaaS orders require manual intervention at multiple fulfillment stages due to UK-specific regulatory and logistics requirements not handled by the standard order management system.",
+      "change_point_to": "UK-specific order fulfillment rules are configured in the order management system, automating customs documentation, carrier selection, and delivery scheduling for UK EaaS orders end-to-end.",
+      "bcpf_l3_detail": "Implements UK fulfillment logic in D365 Supply Chain, including automated customs documentation generation, UK carrier integration, and delivery scheduling. Aligns with post-Brexit import/export requirements for hardware fulfillment.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Order Management",
+      "bcpf_l2": "Order Fulfillment & Logistics",
+      "bcpf_l3": "UK EaaS Order-to-Ship Automation",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 8,
+          "duration_months": 4
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 6,
+          "duration_months": 4
+        },
+        {
+          "role": "QA",
+          "monthly_days": 5,
+          "duration_months": 2
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Delivery",
+      "item_code": "3-3",
+      "initiative": "Flexible Fulfillment - Rollout",
+      "description": "",
+      "budget": 250000,
+      "status": "Above the Line",
+      "sponsors": "Rakshit",
+      "dt_owners": "James",
+      "biz_owner": "Phil Hadfield",
+      "dt_owner_initiative": "James Wang",
+      "business_benefit": "Expands Flexible Fulfillment capability rollout to additional AP and EMEA countries, enabling customers to choose flexible delivery options and reducing fulfillment cost by 15% through optimized logistics routing.",
+      "kpi": "Country coverage: +8 countries; Flexible fulfillment adoption rate: >70% of eligible orders; Fulfillment cost per unit: -15%; Customer satisfaction (CSAT) delivery score: >4.2/5",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-11",
+        "KUT": "2026-12",
+        "UAT": "2027-01",
+        "GRR": "2027-01",
+        "Go_live": "2027-02"
+      },
+      "change_point_from": "Flexible fulfillment options are only available in select countries. Remaining AP and EMEA countries use fixed fulfillment routes with limited carrier options, resulting in higher costs and longer delivery times.",
+      "change_point_to": "Flexible fulfillment is available across all target AP and EMEA countries, with customers able to select delivery options and logistics teams able to optimize routing automatically through the order management system.",
+      "bcpf_l3_detail": "Extends existing Flexible Fulfillment solution to new country configurations in D365 Supply Chain. Includes carrier API integrations for new regions, country-specific compliance checks, and localized delivery option displays in customer portals.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Order Management",
+      "bcpf_l2": "Order Fulfillment & Logistics",
+      "bcpf_l3": "Flexible Fulfillment Geographic Rollout (AP & EMEA)",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 6
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 10,
+          "duration_months": 7
+        },
+        {
+          "role": "BA",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 4
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Delivery",
+      "item_code": "3-4",
+      "initiative": "SWAP Stock Enhancement",
+      "description": "",
+      "budget": 200000,
+      "status": "Above the Line",
+      "sponsors": "Rakshit",
+      "dt_owners": "James",
+      "biz_owner": "Jeanine Holtman",
+      "dt_owner_initiative": "James Wang",
+      "business_benefit": "Enhances SWAP stock management to ensure optimal stock levels and faster turnaround for device swap requests, improving customer experience and reducing swap fulfillment time by 40%.",
+      "kpi": "Swap fulfillment time: -40%; SWAP stock accuracy: >99%; Stock-out incidents: -60%; Customer swap satisfaction: >4.3/5",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-11",
+        "KUT": "2026-12",
+        "UAT": "2027-01",
+        "GRR": "2027-01",
+        "Go_live": "2027-02"
+      },
+      "change_point_from": "SWAP stock levels are managed manually with periodic inventory reviews, leading to stock-outs and over-stocking situations. Swap requests require manual coordination between Service and Supply Chain teams.",
+      "change_point_to": "Automated SWAP stock management system maintains optimal inventory levels using demand forecasting, with automated reorder triggers and real-time visibility for Service teams to confirm swap availability before customer commitments.",
+      "bcpf_l3_detail": "Implements demand-driven SWAP inventory management in ServiceNow integrated with D365 Supply Chain. Automated reorder triggers maintain min/max stock levels by location, with real-time availability visible to Service teams during case creation.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Asset Management",
+      "bcpf_l2": "Reverse Logistics & Asset Recovery",
+      "bcpf_l3": "SWAP Stock Optimization & Automated Replenishment",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 8,
+          "duration_months": 6
+        },
+        {
+          "role": "BA",
+          "monthly_days": 8,
+          "duration_months": 4
+        },
+        {
+          "role": "QA",
+          "monthly_days": 6,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Delivery",
+      "item_code": "3-6",
+      "initiative": "Logistics Orchestration",
+      "description": "",
+      "budget": 300000,
+      "status": "Below the Line",
+      "sponsors": "Rakshit",
+      "dt_owners": "James",
+      "biz_owner": "Stephen Hui",
+      "dt_owner_initiative": "James Wang",
+      "business_benefit": "Implements end-to-end logistics orchestration to automate carrier selection, route optimization, and shipment tracking across all EaaS delivery scenarios, reducing logistics cost by 12% and eliminating manual carrier coordination.",
+      "kpi": "Logistics cost per shipment: -12%; Manual carrier coordination effort: -80%; On-time delivery improvement: +8%; Shipment tracking visibility: 100% of EaaS shipments",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-11",
+        "SIT": "2027-01",
+        "KUT": "2027-02",
+        "UAT": "2027-03",
+        "GRR": "2027-03",
+        "Go_live": "2027-04"
+      },
+      "change_point_from": "Logistics coordination is performed manually by operations teams who select carriers, arrange pickups, and track shipments through carrier portals. No unified shipment visibility exists across the EaaS fleet.",
+      "change_point_to": "Automated logistics orchestration engine selects optimal carriers based on cost, SLA, and availability. All shipment events are tracked in real-time and visible in a unified operations dashboard with automated exception alerts.",
+      "bcpf_l3_detail": "Implements a logistics orchestration layer connecting D365 Supply Chain to multiple carrier APIs with rule-based carrier selection, automated booking, and real-time tracking integration. Exception management workflows trigger alerts and rebooking options automatically.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Order Management",
+      "bcpf_l2": "Order Fulfillment & Logistics",
+      "bcpf_l3": "EaaS Logistics Orchestration & Carrier Management Automation",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 7
+        },
+        {
+          "role": "IT Lead",
+          "monthly_days": 10,
+          "duration_months": 6
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 10,
+          "duration_months": 8
+        },
+        {
+          "role": "BA",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 4
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Delivery",
+      "item_code": "3-5",
+      "initiative": "SNow Sprint support",
+      "description": "",
+      "budget": 800000,
+      "status": "Above the Line",
+      "sponsors": "Rakshit",
+      "dt_owners": "James",
+      "biz_owner": "",
+      "dt_owner_initiative": "Dhara",
+      "business_benefit": "Provides dedicated ServiceNow sprint support to continuously enhance and maintain the ITSM/ITOM capabilities underpinning EaaS service delivery, ensuring platform stability and enabling new workflow automations across 12 planned sprints.",
+      "kpi": "Sprint delivery on-time rate: >90%; ServiceNow platform uptime: >99.9%; New automation workflows deployed per quarter: ≥3; ServiceNow CSAT from EaaS teams: >4.0/5",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-08",
+        "SIT": "2026-09",
+        "KUT": "2026-10",
+        "UAT": "2026-10",
+        "GRR": "2026-10",
+        "Go_live": "2026-11"
+      },
+      "change_point_from": "ServiceNow enhancements for EaaS are queued in a backlog with limited dedicated capacity, resulting in delayed delivery of workflow automations critical to EaaS service delivery.",
+      "change_point_to": "Dedicated EaaS ServiceNow sprint team delivers continuous enhancements on a 4-week sprint cadence, with a prioritized backlog managed by EaaS stakeholders and transparent progress tracking.",
+      "bcpf_l3_detail": "Establishes a dedicated EaaS ServiceNow delivery team running 4-week sprints. Covers ITSM workflow enhancements, CMDB updates, and integration maintenance for EaaS service processes including SWAP, EOT, and device lifecycle management.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Service Delivery",
+      "bcpf_l2": "IT Service Management",
+      "bcpf_l3": "EaaS-Dedicated ServiceNow Sprint Delivery Capability",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 20,
+          "duration_months": 12
+        },
+        {
+          "role": "IT Lead",
+          "monthly_days": 18,
+          "duration_months": 12
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 12,
+          "duration_months": 12
+        },
+        {
+          "role": "QA",
+          "monthly_days": 12,
+          "duration_months": 12
+        },
+        {
+          "role": "BA",
+          "monthly_days": 10,
+          "duration_months": 10
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Leasing",
+      "item_code": "2-1",
+      "initiative": "Leasing Key Capabilities - Credit Control E2E",
+      "description": "Ensure a seamless credit application, decision-making, and control process, with visibility of amount, validity, and overdue data across all key platforms and reports.",
+      "budget": 50000,
+      "status": "Above the Line",
+      "sponsors": "Dom",
+      "dt_owners": "Danny",
+      "biz_owner": "Andrew Stokes",
+      "dt_owner_initiative": "Danny Hu",
+      "business_benefit": "Enables seamless credit application, decision-making, and control with full visibility of credit amounts, validity periods, and overdue data across all key EaaS platforms, reducing credit-related order holds by 60%.",
+      "kpi": "Credit decision turnaround: 5 days → 1 day; Order holds due to credit issues: -60%; Credit data consistency across platforms: 100%; Overdue visibility accuracy: >99%",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-09",
+        "SIT": "2026-10",
+        "KUT": "2026-10",
+        "UAT": "2026-11",
+        "GRR": "2026-11",
+        "Go_live": "2026-12"
+      },
+      "change_point_from": "Credit control data is maintained in isolated systems with no unified view across EaaS platforms. Credit decisions are manually coordinated between Credit teams and Sales, causing order delays.",
+      "change_point_to": "Unified credit control dashboard integrates credit application status, approval, and overdue data across D365, Odessa, and reporting platforms. Automated credit checks trigger at order entry with real-time validation.",
+      "bcpf_l3_detail": "Integrates credit data from credit bureau APIs, Odessa, and D365 into a unified credit control workflow. Automated credit checks at order capture validate against approved credit limits, with alerts for approaching and overdue amounts visible to Finance and Sales teams.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Financial Management",
+      "bcpf_l2": "Credit Management & Control",
+      "bcpf_l3": "EaaS End-to-End Credit Control Integration",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 8,
+          "duration_months": 3
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 5,
+          "duration_months": 4
+        },
+        {
+          "role": "QA",
+          "monthly_days": 5,
+          "duration_months": 2
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Leasing",
+      "item_code": "2-2",
+      "initiative": "Leasing Key Capability - AP Integration",
+      "description": "Minimize the manual work for AP to External Funder, 3PO, Service Partners, Microsoft, AZ HW, Deploy Charges, and Rebates.",
+      "budget": 100000,
+      "status": "Above the Line",
+      "sponsors": "Dom",
+      "dt_owners": "Danny",
+      "biz_owner": "Andrew Stokes",
+      "dt_owner_initiative": "Danny Hu",
+      "business_benefit": "Minimizes manual AP processing by automating payment flows to external funders, 3POs, service partners, Microsoft, AZ Hardware, deployment charges, and rebates — reducing AP processing effort by 75% and payment error rate to near-zero.",
+      "kpi": "AP manual processing effort: -75%; Payment accuracy: >99.9%; AP processing cycle time: -50%; Automated payment reconciliation: 100% of EaaS AP transactions",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-11",
+        "KUT": "2026-12",
+        "UAT": "2027-01",
+        "GRR": "2027-01",
+        "Go_live": "2027-02"
+      },
+      "change_point_from": "AP payments to multiple EaaS ecosystem partners are processed manually with individual payment runs, manual reconciliation, and separate rebate tracking in spreadsheets, causing month-end bottlenecks.",
+      "change_point_to": "Automated AP payment workflows in D365 F&O handle all EaaS partner payment types with rule-based routing, automated rebate netting, and straight-through processing for standard payment scenarios.",
+      "bcpf_l3_detail": "Implements automated AP payment workflows for all EaaS payment categories: external funder payments from Odessa, 3PO service charges, Microsoft license costs, AZ hardware payments, deployment charge allocations, and partner rebate netting. Integrates D365 F&O AP module with Odessa and partner invoicing systems.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Financial Management",
+      "bcpf_l2": "Accounts Payable",
+      "bcpf_l3": "EaaS Multi-Party AP Payment Automation",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 8,
+          "duration_months": 5
+        },
+        {
+          "role": "BA",
+          "monthly_days": 8,
+          "duration_months": 4
+        },
+        {
+          "role": "QA",
+          "monthly_days": 6,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Leasing",
+      "item_code": "2-3",
+      "initiative": "Leasing Key Capability - Remarketing",
+      "description": "EoL Visibility, Integration with ServiceConnect, Remarketers",
+      "budget": 100000,
+      "status": "Above the Line",
+      "sponsors": "Dom",
+      "dt_owners": "Danny",
+      "biz_owner": "Andrew Stokes",
+      "dt_owner_initiative": "Danny Hu",
+      "business_benefit": "Provides end-of-life asset visibility and integration with ServiceConnect and remarketing partners, enabling optimized asset disposition decisions and improving asset recovery value by 15%.",
+      "kpi": "EOL asset visibility coverage: 100%; Remarketing cycle time: -25%; Asset recovery value improvement: +15%; Integration with remarketers: 3+ partners connected",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-11",
+        "KUT": "2026-12",
+        "UAT": "2027-01",
+        "GRR": "2027-01",
+        "Go_live": "2027-02"
+      },
+      "change_point_from": "EOL asset data is scattered across Odessa, ServiceConnect, and offline tracking sheets. Remarketing partner engagement is initiated manually with limited visibility into which assets are available for remarketing.",
+      "change_point_to": "Integrated EOL/remarketing workflow provides real-time asset availability data to remarketing partners via ServiceConnect, with automated eligibility checks and disposition recommendations based on asset condition and market value.",
+      "bcpf_l3_detail": "Integrates Odessa EOT data with ServiceConnect to provide remarketing partners with real-time asset availability feeds. Automated remarketing eligibility assessments trigger based on contract end dates, with disposition recommendations from integrated remarketer APIs.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Asset Management",
+      "bcpf_l2": "Asset Remarketing & Disposition",
+      "bcpf_l3": "EaaS End-of-Life Asset Remarketing Integration",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 8,
+          "duration_months": 5
+        },
+        {
+          "role": "BA",
+          "monthly_days": 8,
+          "duration_months": 4
+        },
+        {
+          "role": "QA",
+          "monthly_days": 6,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Leasing",
+      "item_code": "2-4",
+      "initiative": "Leasing Key Capability - Origination & Quoting Phase III",
+      "description": "E2E LGFS Quotation to support MSA scenarios",
+      "budget": 200000,
+      "status": "Above the Line",
+      "sponsors": "Dom",
+      "dt_owners": "Danny",
+      "biz_owner": "Andrew Stokes",
+      "dt_owner_initiative": "Danny Hu",
+      "business_benefit": "Delivers Phase III origination and quoting capabilities to support MSA (Master Services Agreement) scenarios in LGFS, enabling complex lease structuring and multi-scenario quoting for enterprise customers.",
+      "kpi": "MSA scenario quote time: -50%; LGFS quotation coverage for MSA: 100%; Origination processing accuracy: >99%; Enterprise deal quoting capacity: +30%",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-12",
+        "KUT": "2027-01",
+        "UAT": "2027-02",
+        "GRR": "2027-02",
+        "Go_live": "2027-03"
+      },
+      "change_point_from": "LGFS only supports standard quotation scenarios. MSA deals require manual workarounds and offline calculations outside LGFS, with results manually entered back into the system.",
+      "change_point_to": "LGFS Phase III supports end-to-end MSA quotation scenarios natively, with configurable deal structures, multi-option comparison, and automated downstream handoffs to contract and billing systems.",
+      "bcpf_l3_detail": "Extends LGFS origination and quoting module to handle MSA deal structures including multi-year terms, usage-based pricing, and country-specific financial structures. Integrates with Odessa for booking and D365 for contract execution.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Order Management",
+      "bcpf_l2": "Lease Origination & Quoting",
+      "bcpf_l3": "LGFS MSA Quotation & Origination Phase III",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 6
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 10,
+          "duration_months": 7
+        },
+        {
+          "role": "BA",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 4
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Leasing",
+      "item_code": "2-5",
+      "initiative": "EaaS Migration",
+      "description": "Continue migrate A, B and IaaS deals",
+      "budget": 400000,
+      "status": "Above the Line",
+      "sponsors": "Dom",
+      "dt_owners": "Danny",
+      "biz_owner": "Andrew Stokes",
+      "dt_owner_initiative": "Danny Hu",
+      "business_benefit": "Continues migration of A, B, and IaaS deals from legacy systems to the EaaS platform, ensuring all active deal portfolios benefit from EaaS capabilities and eliminating legacy system maintenance costs.",
+      "kpi": "Legacy deals migrated: 100% of A, B, and IaaS active portfolio; Migration quality: <0.1% data integrity issues; Legacy system decommission readiness: achieved by Q4 FY27",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-09",
+        "SIT": "2026-11",
+        "KUT": "2027-01",
+        "UAT": "2027-02",
+        "GRR": "2027-03",
+        "Go_live": "2027-04"
+      },
+      "change_point_from": "A legacy deal portfolio continues to be serviced on pre-EaaS systems, requiring dual system maintenance, reconciliation between old and new platforms, and limiting the scope of EaaS operational improvements.",
+      "change_point_to": "All A, B, and IaaS deals are migrated to the EaaS platform (Odessa/D365), with full historical data preserved and operational teams working exclusively in the EaaS ecosystem.",
+      "bcpf_l3_detail": "Executes phased data migration of legacy A and B type deals and IaaS contracts into Odessa/D365, with data validation, business reconciliation, and parallel-run periods. Migration factory approach with automated data transformation scripts and exception handling workflows.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Asset Management",
+      "bcpf_l2": "Contract Portfolio Migration",
+      "bcpf_l3": "EaaS Legacy Deal Migration (A, B & IaaS Portfolio)",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 15,
+          "duration_months": 9
+        },
+        {
+          "role": "IT Lead",
+          "monthly_days": 10,
+          "duration_months": 8
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 12,
+          "duration_months": 10
+        },
+        {
+          "role": "BA",
+          "monthly_days": 12,
+          "duration_months": 7
+        },
+        {
+          "role": "QA",
+          "monthly_days": 10,
+          "duration_months": 5
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Leasing",
+      "item_code": "2-6",
+      "initiative": "Operational Support",
+      "description": "",
+      "budget": 50000,
+      "status": "Above the Line",
+      "sponsors": "Dom",
+      "dt_owners": "Danny",
+      "biz_owner": "Andrew Stokes",
+      "dt_owner_initiative": "Danny Hu",
+      "business_benefit": "Provides ongoing operational support to ensure leasing system stability, rapid issue resolution, and continuous improvement of EaaS leasing processes.",
+      "kpi": "Leasing system availability: >99.5%; P1/P2 issue resolution time: <4 hours; Monthly operational improvement items delivered: ≥2",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-08",
+        "SIT": "2026-09",
+        "KUT": "2026-09",
+        "UAT": "2026-09",
+        "GRR": "2026-10",
+        "Go_live": "2026-10"
+      },
+      "change_point_from": "Leasing operational issues are managed through general IT support queues with no dedicated EaaS leasing support resource, resulting in delayed resolution of business-critical issues.",
+      "change_point_to": "Dedicated EaaS leasing operational support resource provides rapid response to system issues and delivers continuous small improvements, with a defined SLA and escalation process.",
+      "bcpf_l3_detail": "Establishes a dedicated operational support capability for the EaaS leasing platform (Odessa, LGFS, leasing integrations). Covers incident management, data corrections, minor enhancements, and performance monitoring with monthly reporting to leasing leadership.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Service Delivery",
+      "bcpf_l2": "Operational Support & Maintenance",
+      "bcpf_l3": "EaaS Leasing Platform Operational Support",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 5,
+          "duration_months": 12
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 3,
+          "duration_months": 12
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Leasing",
+      "item_code": "",
+      "initiative": "Project ARDIC (Automated Returned Device Inspection Capability)",
+      "description": "Automated laptop inspections using AI and sensors to check for damage, missing parts, and functionality.",
+      "budget": 500000,
+      "status": "Below the Line",
+      "sponsors": "Dom",
+      "dt_owners": "Danny",
+      "biz_owner": "Andrew Stokes",
+      "dt_owner_initiative": "Danny Hu",
+      "business_benefit": "Automates laptop inspection at end-of-term using AI computer vision and sensors, reducing manual inspection time from 20 minutes to under 2 minutes per device and enabling consistent, objective condition assessment for remarketing pricing.",
+      "kpi": "Inspection time per device: 20 min → <2 min; Inspection throughput: +10x; Assessment consistency: >99%; Remarketing pricing accuracy improvement: +20%",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-10",
+        "SIT": "2027-01",
+        "KUT": "2027-02",
+        "UAT": "2027-03",
+        "GRR": "2027-04",
+        "Go_live": "2027-05"
+      },
+      "change_point_from": "Returned laptops are manually inspected by technicians who assess damage, missing parts, and functionality using checklists, resulting in inconsistent assessments and a bottleneck of up to 20 minutes per device.",
+      "change_point_to": "Automated inspection stations using AI computer vision, sensor arrays, and functional test automation assess returned devices in under 2 minutes, generating standardized condition reports and recommended remarketing prices.",
+      "bcpf_l3_detail": "Deploys AI inspection stations integrating computer vision (damage/defect detection), sensor arrays (hardware completeness checks), and automated functional testing. Results feed directly into ServiceConnect and Odessa as standardized condition grades linked to remarketing pricing models.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Asset Management",
+      "bcpf_l2": "Asset Inspection & Grading",
+      "bcpf_l3": "AI-Powered Automated Device Inspection (ARDIC)",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 18,
+          "duration_months": 10
+        },
+        {
+          "role": "IT Lead",
+          "monthly_days": 15,
+          "duration_months": 8
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 12,
+          "duration_months": 12
+        },
+        {
+          "role": "BA",
+          "monthly_days": 12,
+          "duration_months": 6
+        },
+        {
+          "role": "QA",
+          "monthly_days": 12,
+          "duration_months": 5
+        },
+        {
+          "role": "CM Lead",
+          "monthly_days": 8,
+          "duration_months": 5
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "F&A",
+      "item_code": "4-2",
+      "initiative": "HCS Hardware and Professional Services mapping report",
+      "description": "To have HW visibility to enable Opportunity Identification and Strategic HC investment Allocation. 8$m TCV Growth and 4$m Rev growth",
+      "budget": 150000,
+      "status": "Above the Line",
+      "sponsors": "Felix",
+      "dt_owners": "Sean Wang",
+      "biz_owner": "Robin Li",
+      "dt_owner_initiative": "Sterling Zeng, Dongjian",
+      "business_benefit": "Delivers HCS hardware and professional services mapping visibility to enable opportunity identification and strategic HC investment allocation, targeting $8M TCV growth and $4M revenue growth.",
+      "kpi": "TCV growth from HCS mapping insights: $8M; Revenue growth: $4M; HW visibility coverage: 100% of HC customers; Opportunity identification cycle: monthly (vs. ad-hoc)",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-11",
+        "KUT": "2026-12",
+        "UAT": "2027-01",
+        "GRR": "2027-01",
+        "Go_live": "2027-02"
+      },
+      "change_point_from": "HCS hardware and professional services data is not mapped to enable systematic opportunity identification. Investment allocation decisions are based on incomplete data without hardware-level visibility.",
+      "change_point_to": "Automated HCS mapping report provides monthly visibility into hardware and professional services attached to each HCS customer, highlighting white-space opportunities for strategic investment and upsell targeting.",
+      "bcpf_l3_detail": "Builds automated data pipeline mapping HCS customer hardware installations to professional services attach rates. Monthly report in Power BI identifies customers with low PS attach (upsell opportunity) and supports investment allocation decisions by HC segment.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Performance Management",
+      "bcpf_l2": "Revenue Analytics & Opportunity Management",
+      "bcpf_l3": "HCS Hardware-to-PS Opportunity Mapping Report",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 8,
+          "duration_months": 5
+        },
+        {
+          "role": "BA",
+          "monthly_days": 8,
+          "duration_months": 4
+        },
+        {
+          "role": "QA",
+          "monthly_days": 6,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "F&A",
+      "item_code": "4-3",
+      "initiative": "Odessa support multi-currency scenario and monthly price consistency adjustment",
+      "description": "Odessa support multi-currency scenario and revaluation on foreign currency billing scenario for long term receivables",
+      "budget": 300000,
+      "status": "Above the Line",
+      "sponsors": "Felix",
+      "dt_owners": "Sean Wang",
+      "biz_owner": "Stone Wu",
+      "dt_owner_initiative": "Sterling Zeng",
+      "business_benefit": "Enables Odessa to handle multi-currency scenarios and monthly price consistency adjustments, supporting international EaaS contracts with foreign currency billing and eliminating manual FX revaluation calculations.",
+      "kpi": "Multi-currency contracts supported in Odessa: 100%; Manual FX revaluation effort: -90%; Billing accuracy for multi-currency scenarios: >99.9%; Month-end currency close time: -50%",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-12",
+        "KUT": "2027-01",
+        "UAT": "2027-02",
+        "GRR": "2027-02",
+        "Go_live": "2027-03"
+      },
+      "change_point_from": "Odessa does not support multi-currency billing scenarios, requiring Finance teams to manually calculate FX revaluations and billing adjustments for international EaaS contracts with foreign currency exposure.",
+      "change_point_to": "Odessa natively handles multi-currency contract scenarios with automated monthly FX revaluation, billing adjustment calculations, and long-term receivable revaluation based on current exchange rates.",
+      "bcpf_l3_detail": "Implements multi-currency contract management in Odessa including FX rate feeds, automated monthly revaluation of billing amounts, and SAP F&O integration for multi-currency accounting entries. Covers long-term receivable FX exposure management for IFRS compliance.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Financial Management",
+      "bcpf_l2": "Billing & Invoicing",
+      "bcpf_l3": "Odessa Multi-Currency Billing & FX Revaluation Automation",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 7
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 10,
+          "duration_months": 8
+        },
+        {
+          "role": "BA",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 4
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "F&A",
+      "item_code": "4-4",
+      "initiative": "Odessa and Magellan PN level enhancement for change events",
+      "description": "",
+      "budget": 300000,
+      "status": "Below the Line",
+      "sponsors": "Felix",
+      "dt_owners": "Sean Wang",
+      "biz_owner": "",
+      "dt_owner_initiative": "Sterling Zeng",
+      "business_benefit": "Enhances Odessa and Magellan with PN (Product Number) level change event tracking, enabling precise financial treatment of contract modifications and ensuring accurate revenue recognition for change events.",
+      "kpi": "PN-level change event processing accuracy: >99.9%; Manual change event reconciliation: eliminated; Revenue recognition accuracy for change events: 100%; Magellan-Odessa sync latency: <1 hour",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-11",
+        "SIT": "2026-12",
+        "KUT": "2027-01",
+        "UAT": "2027-02",
+        "GRR": "2027-03",
+        "Go_live": "2027-03"
+      },
+      "change_point_from": "Contract change events are tracked at summary level without PN granularity, requiring manual reconciliation between Odessa and Magellan to determine financial impacts of product-level changes.",
+      "change_point_to": "PN-level change events in Odessa and Magellan automatically trigger appropriate financial treatments, with automated reconciliation between systems and accurate revenue recognition adjustments.",
+      "bcpf_l3_detail": "Extends Odessa contract change event schema to PN granularity and implements corresponding Magellan integration for financial processing. Automated reconciliation engine validates PN-level financial impacts against contract terms and triggers revenue recognition adjustments.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Financial Management",
+      "bcpf_l2": "Contract Financial Management",
+      "bcpf_l3": "Odessa-Magellan PN-Level Change Event Processing",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 7
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 10,
+          "duration_months": 8
+        },
+        {
+          "role": "BA",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 4
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "F&A",
+      "item_code": "4-5",
+      "initiative": "Running DAAS Leasing Detail report",
+      "description": "",
+      "budget": 300000,
+      "status": "Below the Line",
+      "sponsors": "Felix",
+      "dt_owners": "Sean Wang",
+      "biz_owner": "",
+      "dt_owner_initiative": "Sterling Zeng",
+      "business_benefit": "Automates the DAAS leasing detail report to provide Finance and Operations with daily visibility into all active DAAS leasing positions, eliminating 3+ hours of daily manual report preparation.",
+      "kpi": "Report preparation effort: -100% (fully automated); Report frequency: daily (vs. weekly manual); Data freshness: same-day; Report distribution to stakeholders: automated",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-11",
+        "KUT": "2026-12",
+        "UAT": "2027-01",
+        "GRR": "2027-01",
+        "Go_live": "2027-02"
+      },
+      "change_point_from": "DAAS leasing detail reports are manually prepared weekly by Finance using data extracted from multiple systems, taking 3+ hours per report with inconsistent data as of dates.",
+      "change_point_to": "Automated daily DAAS leasing detail report pulls from Odessa and D365, refreshes overnight, and is automatically distributed to Finance and Operations stakeholders each morning.",
+      "bcpf_l3_detail": "Implements automated data pipeline from Odessa (leasing contracts) and D365 (financial data) to Power BI DAAS leasing detail report. Automated overnight refresh, exception highlighting, and distribution list management via Power BI service.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Financial Management",
+      "bcpf_l2": "Management Reporting",
+      "bcpf_l3": "Automated DAAS Leasing Portfolio Detail Reporting",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 6
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 8,
+          "duration_months": 7
+        },
+        {
+          "role": "BA",
+          "monthly_days": 10,
+          "duration_months": 4
+        },
+        {
+          "role": "QA",
+          "monthly_days": 6,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "PSD",
+      "item_code": "1",
+      "initiative": "PSD Project Accounting and MR report",
+      "description": "PSD Project Accounting and MR report",
+      "budget": 500000,
+      "status": "Above the Line",
+      "sponsors": "Felix, Rakshit",
+      "dt_owners": "Jimmy",
+      "biz_owner": "Felix",
+      "dt_owner_initiative": "Jimmy Guo, Sean Wang",
+      "business_benefit": "Implements PSD project accounting and management reporting capabilities, providing real-time financial visibility across all PSD projects and eliminating manual month-end reporting effort of 5+ days.",
+      "kpi": "Month-end project accounting close time: -60%; Management report preparation: automated (0 manual hours); Project financial accuracy: >99.9%; PSD revenue recognition timeliness: 100%",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-10",
+        "SIT": "2026-12",
+        "KUT": "2027-01",
+        "UAT": "2027-02",
+        "GRR": "2027-03",
+        "Go_live": "2027-04"
+      },
+      "change_point_from": "PSD project accounting and management reporting require extensive manual data collection and consolidation from D365, SAP, and spreadsheets each month, with reports delivered 5+ days after month-end.",
+      "change_point_to": "Real-time project accounting in D365/SAP with automated management reports generated on day 1 of month-end close, providing PSD leadership with immediate financial visibility.",
+      "bcpf_l3_detail": "Implements PSD-specific project accounting module in D365 Project Operations integrated with SAP F&O for GL posting. Automated MR report generation covers project P&L, revenue recognition, backlog, and forecast vs. actual with drill-down capability.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Financial Management",
+      "bcpf_l2": "Project Accounting & Revenue Recognition",
+      "bcpf_l3": "PSD Automated Project Accounting & MR Reporting",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 15,
+          "duration_months": 9
+        },
+        {
+          "role": "IT Lead",
+          "monthly_days": 10,
+          "duration_months": 7
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 12,
+          "duration_months": 10
+        },
+        {
+          "role": "BA",
+          "monthly_days": 12,
+          "duration_months": 7
+        },
+        {
+          "role": "QA",
+          "monthly_days": 10,
+          "duration_months": 5
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "PSD",
+      "item_code": "2",
+      "initiative": "PSD Operation Refinement",
+      "description": "PSD Operation Refinement",
+      "budget": 400000,
+      "status": "Above the Line",
+      "sponsors": "Felix, Rakshit",
+      "dt_owners": "Jimmy",
+      "biz_owner": "Rakshit, Laura, Allen, Damo, Deepak",
+      "dt_owner_initiative": "Jimmy Guo",
+      "business_benefit": "Refines PSD operational processes to improve efficiency, quality, and consistency across project delivery, customer service, and resource management — targeting a 25% improvement in operational efficiency.",
+      "kpi": "Operational efficiency improvement: +25%; Process standardization score: >90%; Customer satisfaction: >4.2/5; Resource utilization improvement: +15%",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-10",
+        "SIT": "2026-12",
+        "KUT": "2027-01",
+        "UAT": "2027-02",
+        "GRR": "2027-03",
+        "Go_live": "2027-03"
+      },
+      "change_point_from": "PSD operations rely on ad-hoc processes and individual team practices, resulting in inconsistent service delivery quality and limited visibility into operational performance across regions.",
+      "change_point_to": "Standardized PSD operational processes are digitized in D365 and ServiceNow, with consistent workflows for customer engagement, delivery management, and resource allocation supported by real-time operational dashboards.",
+      "bcpf_l3_detail": "Documents and digitizes PSD operational processes including customer engagement templates, delivery milestone tracking, quality assurance checkpoints, and resource scheduling in D365 Project Operations and ServiceNow.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Service Delivery",
+      "bcpf_l2": "Professional Services Delivery Management",
+      "bcpf_l3": "PSD Operational Process Standardization & Digitization",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 7
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 12,
+          "duration_months": 9
+        },
+        {
+          "role": "BA",
+          "monthly_days": 12,
+          "duration_months": 6
+        },
+        {
+          "role": "CM Lead",
+          "monthly_days": 10,
+          "duration_months": 6
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 4
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "PSD",
+      "item_code": "3",
+      "initiative": "Deal Governance Enhancement",
+      "description": "Deal/project change request, Deal Assurance Check Task generation",
+      "budget": 200000,
+      "status": "Above the Line",
+      "sponsors": "Felix, Rakshit",
+      "dt_owners": "Jimmy",
+      "biz_owner": "Rachael, Chhavi",
+      "dt_owner_initiative": "Jimmy Guo, Bo Chen",
+      "business_benefit": "Enhances deal governance with automated change request processing and deal assurance task generation, reducing governance overhead by 40% and ensuring consistent deal quality checks across all PSD engagements.",
+      "kpi": "Deal governance cycle time: -40%; Change request processing time: 3 days → 4 hours; Deal assurance check coverage: 100%; Governance exception rate: <5%",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-11",
+        "KUT": "2026-12",
+        "UAT": "2027-01",
+        "GRR": "2027-01",
+        "Go_live": "2027-02"
+      },
+      "change_point_from": "Deal change requests and governance checks are managed manually through email and spreadsheets, with inconsistent application of deal assurance criteria and delayed approval cycles.",
+      "change_point_to": "Automated deal governance workflows in D365 route change requests for approval, auto-generate deal assurance checklist tasks, and track completion status with escalation alerts for overdue items.",
+      "bcpf_l3_detail": "Implements D365-based deal governance workflows covering change request submission, impact assessment, approval routing, and deal assurance task auto-generation. Integrates with Concord for contract change tracking and ServiceNow for task management.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Order Management",
+      "bcpf_l2": "Deal Governance & Assurance",
+      "bcpf_l3": "Automated Deal Change Request & Assurance Task Management",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 8,
+          "duration_months": 6
+        },
+        {
+          "role": "BA",
+          "monthly_days": 8,
+          "duration_months": 4
+        },
+        {
+          "role": "QA",
+          "monthly_days": 6,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "PSD",
+      "item_code": "4",
+      "initiative": "TCV Realization (TCV to go)",
+      "description": "Sales TCV rollout/forecast E2E capabilities. Enable the TCV rollout forecasting capability with automated forecasting e2e integrated solution",
+      "budget": 560000,
+      "status": "Above the Line",
+      "sponsors": "Felix, Rakshit",
+      "dt_owners": "Jimmy",
+      "biz_owner": "Felix, Mary, Rebecca, Chhavi",
+      "dt_owner_initiative": "Jimmy Guo, Sterling Zeng",
+      "business_benefit": "Delivers end-to-end TCV rollout forecasting capability with automated integrated forecasting, enabling PSD to proactively manage revenue recognition and reduce forecast variance by 30%.",
+      "kpi": "TCV forecast variance: -30%; Forecast cycle preparation time: 5 days → 1 day; TCV rollout accuracy: >95%; Automated forecast updates: weekly (vs. monthly manual)",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-10",
+        "SIT": "2026-12",
+        "KUT": "2027-01",
+        "UAT": "2027-03",
+        "GRR": "2027-03",
+        "Go_live": "2027-04"
+      },
+      "change_point_from": "TCV rollout forecasting is performed manually in Excel with data pulled from multiple systems monthly, resulting in forecast delays, high variance, and limited ability to course-correct during the quarter.",
+      "change_point_to": "Automated TCV rollout forecasting engine provides weekly updated forecasts integrating sales pipeline, delivery milestones, and billing schedule data. Executive TCV-to-go dashboards enable proactive revenue management.",
+      "bcpf_l3_detail": "Builds TCV rollout forecasting engine integrating D365 sales pipeline, D365 Project Operations milestones, and Odessa billing schedules. Machine learning-assisted forecast adjustment based on historical delivery patterns, with Power BI TCV-to-go dashboard for executive reporting.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Performance Management",
+      "bcpf_l2": "Revenue Forecasting & Management",
+      "bcpf_l3": "Automated TCV Rollout Forecasting & Revenue Realization",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 15,
+          "duration_months": 8
+        },
+        {
+          "role": "IT Lead",
+          "monthly_days": 10,
+          "duration_months": 6
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 12,
+          "duration_months": 9
+        },
+        {
+          "role": "BA",
+          "monthly_days": 12,
+          "duration_months": 6
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 4
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "PSD",
+      "item_code": "5",
+      "initiative": "Vertical Solution Visibility",
+      "description": "Setup Solution Hierarchy based on verticals solutions portfolio, identify system gaps for reporting and build up business insights. Function from Opportunity to order to report.",
+      "budget": 500000,
+      "status": "Above the Line",
+      "sponsors": "Felix, Rakshit",
+      "dt_owners": "Jimmy",
+      "biz_owner": "Mary, Rebecca, Chhavi",
+      "dt_owner_initiative": "Jimmy Guo",
+      "business_benefit": "Sets up a solution hierarchy based on vertical solutions portfolio, identifies system gaps for reporting, and builds business insights from opportunity through order to report, enabling PSD to target vertical markets effectively.",
+      "kpi": "Vertical solution visibility coverage: 100% of PSD portfolio; System gap identification: complete within Q1 FY27; Vertical-specific reporting: live for top 5 verticals by Q3 FY27",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-10",
+        "SIT": "2026-12",
+        "KUT": "2027-01",
+        "UAT": "2027-02",
+        "GRR": "2027-03",
+        "Go_live": "2027-04"
+      },
+      "change_point_from": "PSD solutions are tracked without vertical market segmentation, limiting the ability to identify vertical-specific opportunities, measure vertical market performance, or build targeted go-to-market strategies.",
+      "change_point_to": "Solution hierarchy configured in D365 with vertical market taxonomy, enabling end-to-end reporting from opportunity through order to recognition by vertical. Business intelligence dashboards provide vertical market insights for strategic decisions.",
+      "bcpf_l3_detail": "Configures vertical solution hierarchy in D365 product catalog and opportunity management. Implements Power BI vertical market dashboard covering pipeline, order, delivery, and revenue by vertical solution type. Gap analysis identifies missing data elements for full vertical visibility.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Performance Management",
+      "bcpf_l2": "Portfolio & Pipeline Analytics",
+      "bcpf_l3": "Vertical Solution Portfolio Visibility & Insight Platform",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 15,
+          "duration_months": 8
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 12,
+          "duration_months": 9
+        },
+        {
+          "role": "BA",
+          "monthly_days": 12,
+          "duration_months": 6
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 4
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "PSD",
+      "item_code": "6",
+      "initiative": "MSPO AI Adoption",
+      "description": "Q&A hub-Ask PISA; Intelligent Analytics Hub-project operation insight; Autonomous Decision Hub",
+      "budget": 400000,
+      "status": "Above the Line",
+      "sponsors": "Felix, Rakshit",
+      "dt_owners": "Jimmy",
+      "biz_owner": "Laura, Allen, Damo, Deepak, Wil, Chhavi",
+      "dt_owner_initiative": "Jimmy Guo, Jiaolin Li",
+      "business_benefit": "Drives AI adoption in MSPO through three integrated AI capabilities: a Q&A Hub (Ask PISA) for instant project knowledge access, an Intelligent Analytics Hub for operational insights, and an Autonomous Decision Hub for streamlined approvals.",
+      "kpi": "MSPO team time saved via AI Q&A: >30 min/day per user; Decision cycle time: -40%; AI adoption rate: >70% of MSPO team within 6 months; Analytics hub query volume: >100/week",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-10",
+        "SIT": "2027-01",
+        "KUT": "2027-02",
+        "UAT": "2027-03",
+        "GRR": "2027-04",
+        "Go_live": "2027-05"
+      },
+      "change_point_from": "MSPO teams spend significant time searching for project information across multiple systems, preparing analytics manually, and waiting for decision approvals through email-based processes.",
+      "change_point_to": "AI-powered MSPO tools provide instant answers to project queries (Ask PISA), automated operational analytics, and streamlined decision workflows, enabling MSPO teams to focus on high-value activities.",
+      "bcpf_l3_detail": "Implements three AI layers for MSPO: (1) Ask PISA — RAG-based Q&A over project documents and data using Azure OpenAI; (2) Intelligent Analytics Hub — automated insight generation from D365 project operations data; (3) Autonomous Decision Hub — AI-assisted approval workflows for routine MSPO decisions.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Service Delivery",
+      "bcpf_l2": "Intelligent Operations",
+      "bcpf_l3": "MSPO AI-Powered Operations Hub (Q&A, Analytics, Decisions)",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 15,
+          "duration_months": 8
+        },
+        {
+          "role": "IT Lead",
+          "monthly_days": 12,
+          "duration_months": 7
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 12,
+          "duration_months": 9
+        },
+        {
+          "role": "BA",
+          "monthly_days": 10,
+          "duration_months": 6
+        },
+        {
+          "role": "CM Lead",
+          "monthly_days": 10,
+          "duration_months": 6
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 5
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "PSD",
+      "item_code": "7",
+      "initiative": "Concord ODT Phase 2",
+      "description": "Automation & Efficiency; Governance & Compliance",
+      "budget": 100000,
+      "status": "Above the Line",
+      "sponsors": "Felix, Rakshit",
+      "dt_owners": "Jimmy",
+      "biz_owner": "Adnan, Chhavi",
+      "dt_owner_initiative": "Jiaolin Li",
+      "business_benefit": "Delivers Phase 2 of Concord ODT (On-Demand Tool) with automation and efficiency improvements plus governance and compliance enhancements, reducing manual contract processing effort by 50%.",
+      "kpi": "Manual contract processing effort: -50%; Concord ODT automation coverage: >80% of standard contracts; Governance compliance rate: 100%; Contract cycle time: -35%",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-11",
+        "KUT": "2026-12",
+        "UAT": "2027-01",
+        "GRR": "2027-01",
+        "Go_live": "2027-02"
+      },
+      "change_point_from": "Concord ODT Phase 1 covers basic contract creation. Phase 2 gaps leave significant manual effort in contract automation and limited governance controls for compliance tracking.",
+      "change_point_to": "Concord ODT Phase 2 delivers advanced automation for complex contract scenarios and comprehensive governance controls, with compliance dashboards and automated audit trails.",
+      "bcpf_l3_detail": "Extends Concord ODT with advanced contract template automation, dynamic clause selection based on deal attributes, and compliance tracking features. Governance module provides approval workflow automation, audit trails, and regulatory compliance dashboards.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Customer Management",
+      "bcpf_l2": "Contract Lifecycle Management",
+      "bcpf_l3": "Concord ODT Phase 2 - Automation & Governance Enhancement",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 8,
+          "duration_months": 4
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 6,
+          "duration_months": 5
+        },
+        {
+          "role": "BA",
+          "monthly_days": 6,
+          "duration_months": 3
+        },
+        {
+          "role": "QA",
+          "monthly_days": 5,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "LPS",
+      "item_code": "1",
+      "initiative": "LPS Migration",
+      "description": "To phase out Salesforce and migrate the lead and opportunity management feature into D365. Integration from Sales process to project creation",
+      "budget": 500000,
+      "status": "Above the Line",
+      "sponsors": "Tom",
+      "dt_owners": "Jimmy",
+      "biz_owner": "Tom, Jonathan",
+      "dt_owner_initiative": "Jimmy, Ryan",
+      "business_benefit": "Phases out Salesforce and migrates lead and opportunity management to D365, eliminating dual-system maintenance costs and enabling integrated end-to-end sales process from lead through project creation.",
+      "kpi": "Salesforce license cost elimination: 100%; D365 adoption by LPS sales team: >95%; Lead-to-opportunity process time: -30%; Duplicate data entry: eliminated",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-10",
+        "SIT": "2026-12",
+        "KUT": "2027-01",
+        "UAT": "2027-02",
+        "GRR": "2027-03",
+        "Go_live": "2027-04"
+      },
+      "change_point_from": "LPS manages leads and opportunities in Salesforce while delivery and projects are in D365, requiring manual data transfer between systems and maintaining two separate sales platforms.",
+      "change_point_to": "All LPS lead and opportunity management is conducted in D365, with automated project creation upon opportunity win. Salesforce is decommissioned, eliminating dual-system overhead.",
+      "bcpf_l3_detail": "Migrates LPS lead and opportunity management from Salesforce to D365 Sales, including custom fields, workflows, and integrations. Historical opportunity data migrated and verified. Automated project creation in D365 Project Operations triggered on opportunity win.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Customer Management",
+      "bcpf_l2": "Lead & Opportunity Management",
+      "bcpf_l3": "LPS Salesforce-to-D365 Lead & Opportunity Migration",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 18,
+          "duration_months": 9
+        },
+        {
+          "role": "IT Lead",
+          "monthly_days": 12,
+          "duration_months": 7
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 15,
+          "duration_months": 10
+        },
+        {
+          "role": "BA",
+          "monthly_days": 15,
+          "duration_months": 7
+        },
+        {
+          "role": "CM Lead",
+          "monthly_days": 10,
+          "duration_months": 6
+        },
+        {
+          "role": "QA",
+          "monthly_days": 12,
+          "duration_months": 5
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "LPS",
+      "item_code": "2",
+      "initiative": "LPS Migration-Project Delivery",
+      "description": "Project management refinement, Service Quotation, Project Execution automation, Approval Center enhancement, Project Procurement optimization",
+      "budget": 200000,
+      "status": "Above the Line",
+      "sponsors": "Tom",
+      "dt_owners": "Jimmy",
+      "biz_owner": "Tom, Jonathan",
+      "dt_owner_initiative": "Jimmy, Yuyan Xu",
+      "business_benefit": "Refines LPS project delivery capabilities in D365 with service quotation automation, project execution workflows, approval center enhancements, and procurement optimization — improving delivery efficiency by 35%.",
+      "kpi": "Service quotation time: -50%; Project setup time: -40%; Approval cycle time: -60%; Procurement process efficiency: +35%",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-11",
+        "SIT": "2026-12",
+        "KUT": "2027-01",
+        "UAT": "2027-02",
+        "GRR": "2027-02",
+        "Go_live": "2027-03"
+      },
+      "change_point_from": "LPS project delivery uses manual service quotation processes, fragmented project execution tracking, and email-based approval workflows with limited integration with procurement systems.",
+      "change_point_to": "D365 Project Operations provides automated service quotation, integrated project execution tracking, digital approval workflows, and streamlined procurement management for LPS projects.",
+      "bcpf_l3_detail": "Enhances D365 Project Operations for LPS with automated service quotation templates, project execution milestone tracking, digital approval center for scope changes, and procurement integration for subcontractor and material management.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Service Delivery",
+      "bcpf_l2": "Project Delivery Management",
+      "bcpf_l3": "LPS D365 Project Delivery Automation & Enhancement",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 12,
+          "duration_months": 6
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 10,
+          "duration_months": 7
+        },
+        {
+          "role": "BA",
+          "monthly_days": 10,
+          "duration_months": 5
+        },
+        {
+          "role": "QA",
+          "monthly_days": 8,
+          "duration_months": 4
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "LPS",
+      "item_code": "3",
+      "initiative": "LPS Migration-Finance",
+      "description": "Measure Report Enhancement Automation of MSPO interlock when project P&L accruals and reversals are performed in S4 MSPO/S4 month end closing log check",
+      "budget": 100000,
+      "status": "Above the Line",
+      "sponsors": "Tom",
+      "dt_owners": "Jimmy",
+      "biz_owner": "Tom, Jonathan",
+      "dt_owner_initiative": "Sean Wang, Jing Li",
+      "business_benefit": "Automates LPS finance reporting through measurement report enhancements and automated MSPO interlock for project P&L accruals and reversals, reducing month-end close work by 3 days.",
+      "kpi": "Month-end close time reduction: 3 days; MSPO interlock errors: 0; Automated P&L accrual coverage: 100% of LPS projects; Finance report accuracy: >99.9%",
+      "timeline": {
+        "BSR": "2026-09",
+        "ISR": "2026-10",
+        "SIT": "2026-11",
+        "KUT": "2027-01",
+        "UAT": "2027-01",
+        "GRR": "2027-02",
+        "Go_live": "2027-02"
+      },
+      "change_point_from": "LPS finance reporting and MSPO interlock require manual P&L accruals, reversals, and reconciliation between D365 Project Operations, S4 MSPO, and SAP each month-end.",
+      "change_point_to": "Automated finance interlock processes P&L accruals and reversals systematically at month-end, with automated reconciliation between D365, S4 MSPO, and SAP. Measure reports are generated automatically with drill-down capability.",
+      "bcpf_l3_detail": "Implements automated P&L accrual and reversal workflows at month-end integrating D365 Project Operations with S4 MSPO and SAP. Automated month-end closing log checks and reconciliation reports eliminate manual Finance intervention for standard scenarios.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Financial Management",
+      "bcpf_l2": "Project Accounting & Revenue Recognition",
+      "bcpf_l3": "LPS Automated Finance Interlock & Measure Reporting",
+      "resource_plan": [
+        {
+          "role": "DT Lead",
+          "monthly_days": 8,
+          "duration_months": 4
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 6,
+          "duration_months": 5
+        },
+        {
+          "role": "BA",
+          "monthly_days": 8,
+          "duration_months": 4
+        },
+        {
+          "role": "QA",
+          "monthly_days": 5,
+          "duration_months": 3
+        }
+      ]
+    },
+    {
+      "project": "EaaS 2.0",
+      "category": "Strategic",
+      "sub_project": "Change Management",
+      "item_code": "1",
+      "initiative": "Change Management & Training",
+      "description": "",
+      "budget": 500000,
+      "status": "Above the Line",
+      "sponsors": "",
+      "dt_owners": "",
+      "biz_owner": "Andrej, Chhavi",
+      "dt_owner_initiative": "Michaela",
+      "business_benefit": "Ensures successful adoption of all EaaS Phase II capabilities through comprehensive change management and training programs, targeting >80% adoption rates within 3 months of each go-live.",
+      "kpi": "Capability adoption rate: >80% within 3 months of go-live; Training completion: >95% of target audience; OCM satisfaction score: >4.0/5; Business readiness: >85% per capability",
+      "timeline": {
+        "BSR": "2026-08",
+        "ISR": "2026-08",
+        "SIT": "2026-09",
+        "KUT": "2026-10",
+        "UAT": "2026-10",
+        "GRR": "2026-10",
+        "Go_live": "2026-11"
+      },
+      "change_point_from": "Change management and training for new EaaS capabilities is reactive, delivered ad-hoc without a structured program and with limited measurement of adoption outcomes.",
+      "change_point_to": "Structured OCM program with planned change impact assessments, targeted training by role, communication campaigns, and adoption measurement dashboards ensures all EaaS Phase II capabilities are successfully adopted by business stakeholders.",
+      "bcpf_l3_detail": "Delivers end-to-end OCM for all 38 EaaS Phase II initiatives: stakeholder change impact assessments, role-based training curricula, communication plans and campaigns, business readiness assessments before each go-live, and adoption tracking dashboards. Covers all go-lives from FY26 Q2 through FY27 Q4.",
+      "resource_name": "",
+      "dt_it_pm": "",
+      "monthly_rp": "",
+      "bcpf_l1": "Organizational Change Management",
+      "bcpf_l2": "Change Enablement & Training",
+      "bcpf_l3": "EaaS Phase II Program-Wide OCM & Training Delivery",
+      "resource_plan": [
+        {
+          "role": "CM Lead",
+          "monthly_days": 20,
+          "duration_months": 12
+        },
+        {
+          "role": "DT PM",
+          "monthly_days": 10,
+          "duration_months": 12
+        },
+        {
+          "role": "BA",
+          "monthly_days": 8,
+          "duration_months": 10
+        }
+      ]
+    }
+  ]
+}

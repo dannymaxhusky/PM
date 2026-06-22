@@ -1,0 +1,12 @@
+.DS_Store
+.vercel
+node_modules/
+dist/
+.npm-cache/
+.env
+.env.*
+*.log
+temp_*.js
+ssg-pm-workspace/node_modules/
+ssg-pm-workspace/dist/
+ssg-pm-workspace/.npm-cache/
