@@ -3,6 +3,7 @@
 node_modules/
 dist/
 .npm-cache/
+.npmrc
 .env
 .env.*
 *.log
@@ -10,3 +11,4 @@ temp_*.js
 ssg-pm-workspace/node_modules/
 ssg-pm-workspace/dist/
 ssg-pm-workspace/.npm-cache/
+ssg-pm-workspace/.npmrc
