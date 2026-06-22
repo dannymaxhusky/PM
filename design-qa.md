@@ -14,6 +14,8 @@ final result: passed
 - Production build passes in a clean `/tmp` workspace.
 - Calendar module shows FY2627 and the correct date range.
 - Manual database buttons are not visible.
+- User-facing database status labels and the month "Active" marker are not visible.
+- Workspace changes are saved through a silent background POST to the Netlify Function.
 - Clicking a weekday marks it as a public holiday.
 - Clicking a weekend marks it as a weekend workday.
 - Monthly working day totals update from calendar state.

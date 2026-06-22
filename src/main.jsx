@@ -6,7 +6,6 @@ import {
   CalendarDays,
   CheckCircle2,
   CircleDollarSign,
-  Database,
   Gauge,
   Globe2,
   Layers3,
@@ -59,12 +58,6 @@ const I18N = {
     projects: "Sub-projects",
     add: "Add",
     save: "Save",
-    local: "Local changes",
-    synced: "Saved",
-    saving: "Saving",
-    loading: "Loading",
-    offline: "Local fallback",
-    autoSave: "Auto-saves to Netlify Database",
     name: "Name",
     role: "Role",
     owner: "Owner",
@@ -96,8 +89,6 @@ const I18N = {
     all: "All",
     filter: "Filter",
     empty: "No data yet. Add configuration first.",
-    dbReady: "Netlify Database",
-    dbNote: "Workspace changes load automatically and are saved after edits.",
     fiscalYear: "FY2627",
     fiscalRange: "Apr 1, 2026 - Mar 31, 2027",
     fiscalHint: "Click weekdays to mark public holidays. Click weekends to mark makeup workdays.",
@@ -108,7 +99,6 @@ const I18N = {
     weekend: "Weekend",
     publicHoliday: "Public holiday",
     weekendWorkday: "Weekend workday",
-    activeMonth: "Active",
   },
   zh: {
     app: "项目管理平台",
@@ -124,12 +114,6 @@ const I18N = {
     projects: "子项目",
     add: "新增",
     save: "保存",
-    local: "本地修改",
-    synced: "已保存",
-    saving: "保存中",
-    loading: "读取中",
-    offline: "本地兜底",
-    autoSave: "自动保存到 Netlify Database",
     name: "名称",
     role: "角色",
     owner: "负责人",
@@ -161,8 +145,6 @@ const I18N = {
     all: "全部",
     filter: "筛选",
     empty: "暂无数据，请先完成基础配置。",
-    dbReady: "Netlify Database",
-    dbNote: "进入页面自动读取；任何修改会自动保存到数据库。",
     fiscalYear: "FY2627",
     fiscalRange: "2026年4月1日 - 2027年3月31日",
     fiscalHint: "点击工作日标记为公休假期；点击周末标记为调休工作日。",
@@ -173,7 +155,6 @@ const I18N = {
     weekend: "周末",
     publicHoliday: "公休假期",
     weekendWorkday: "周末调休",
-    activeMonth: "启用",
   },
 };
 
@@ -291,10 +272,8 @@ function App() {
   const [configTab, setConfigTab] = useState("people");
   const [workspace, setWorkspace] = useState(loadInitial);
   const [filters, setFilters] = useState({ portfolioId: "all", ownerId: "all", status: "all", risk: "all", month: "all", query: "" });
-  const [syncState, setSyncState] = useState(I18N.zh.loading);
-  const [dbReady, setDbReady] = useState(false);
+  const [remoteLoadFinished, setRemoteLoadFinished] = useState(false);
   const saveTimer = useRef(null);
-  const saveGeneration = useRef(0);
   const t = (key) => I18N[lang][key] || key;
 
   useEffect(() => {
@@ -309,15 +288,11 @@ function App() {
         if (!response.ok) throw new Error("Database function unavailable");
         const payload = await response.json();
         if (!cancelled && payload.data) setWorkspace(normalizeWorkspace(payload.data));
-        if (!cancelled) {
-          setDbReady(true);
-          setSyncState(I18N[lang].synced);
-        }
       } catch {
-        if (!cancelled) {
-          setDbReady(false);
-          setSyncState(I18N[lang].offline);
-        }
+        // Local Vite previews do not serve Netlify Functions. Keep editing locally and
+        // let the production deploy persist through the same endpoint.
+      } finally {
+        if (!cancelled) setRemoteLoadFinished(true);
       }
     }
     loadWorkspace();
@@ -327,26 +302,23 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!dbReady) return undefined;
+    if (!remoteLoadFinished) return undefined;
     window.clearTimeout(saveTimer.current);
-    setSyncState(I18N[lang].saving);
-    const generation = saveGeneration.current + 1;
-    saveGeneration.current = generation;
     saveTimer.current = window.setTimeout(async () => {
       try {
         const response = await fetch("/.netlify/functions/workspace", {
-          method: "PUT",
+          method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ data: workspace }),
         });
         if (!response.ok) throw new Error("Autosave failed");
-        if (saveGeneration.current === generation) setSyncState(I18N[lang].synced);
-      } catch {
-        if (saveGeneration.current === generation) setSyncState(I18N[lang].offline);
+      } catch (error) {
+        // Autosave is intentionally silent; localStorage remains the editing fallback.
+        console.warn("Workspace autosave failed", error);
       }
     }, 700);
     return () => window.clearTimeout(saveTimer.current);
-  }, [dbReady, lang, workspace]);
+  }, [remoteLoadFinished, workspace]);
 
   const viewProjects = useMemo(() => {
     return workspace.projects.filter((project) => {
@@ -372,7 +344,6 @@ function App() {
 
   function addRecord(type, record) {
     setWorkspace((current) => ({ ...current, [type]: [...current[type], { id: uid(type), ...record }] }));
-    setSyncState(t("local"));
   }
 
   function updateRecord(type, id, patch) {
@@ -380,7 +351,6 @@ function App() {
       ...current,
       [type]: current[type].map((item) => (item.id === id ? { ...item, ...patch } : item)),
     }));
-    setSyncState(t("local"));
   }
 
   const nav = [
@@ -408,11 +378,6 @@ function App() {
             </button>
           ))}
         </nav>
-        <div className="db-card">
-          <Database size={18} />
-          <strong>{t("dbReady")}</strong>
-          <p>{t("dbNote")}</p>
-        </div>
       </aside>
 
       <main>
@@ -423,7 +388,6 @@ function App() {
           </div>
           <div className="actions">
             <button className="small" onClick={() => setLang(lang === "zh" ? "en" : "zh")}><Globe2 size={15} />{lang === "zh" ? "EN" : "中"}</button>
-            <span className={dbReady ? "sync sync-ready" : "sync"}><Database size={14} />{syncState}</span>
           </div>
         </header>
 
@@ -545,7 +509,6 @@ function CalendarConfig({ t, lang, calendar, updateRecord }) {
                 <h3>{monthLabel(month, lang)}</h3>
                 <span>{t("fiscalYear")}</span>
               </div>
-              <b>{t("activeMonth")}</b>
             </div>
             <div className="working-box">
               <div>

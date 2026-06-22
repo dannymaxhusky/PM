@@ -34,7 +34,8 @@ button {
 .sidebar {
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto;
+  align-content: start;
   gap: 22px;
   border-right: 1px solid #d9e1ea;
   padding: 20px 16px;
@@ -108,27 +109,6 @@ nav button.active,
   background: #eef2ff;
 }
 
-.db-card {
-  align-self: end;
-  display: grid;
-  gap: 8px;
-  border: 1px solid #d9e1ea;
-  border-radius: 8px;
-  padding: 14px;
-  background: #fff;
-}
-
-.db-card strong {
-  font-size: 13px;
-}
-
-.db-card p {
-  margin: 0;
-  color: #64748b;
-  font-size: 12px;
-  line-height: 1.45;
-}
-
 main {
   min-width: 0;
   padding: 22px;
@@ -179,27 +159,6 @@ h1 {
   border-color: #2563eb;
   color: #fff;
   background: #2563eb;
-}
-
-.sync {
-  min-width: 92px;
-  height: 32px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  border: 1px solid #d9e1ea;
-  border-radius: 8px;
-  background: #fff;
-  color: #64748b;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.sync-ready {
-  border-color: #bbf7d0;
-  color: #166534;
-  background: #f0fdf4;
 }
 
 .page-grid {
@@ -513,13 +472,6 @@ textarea {
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
 }
 
-.month-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-}
-
 .month-head h3 {
   margin: 0;
   font-size: 16px;
@@ -531,17 +483,6 @@ textarea {
   color: #64748b;
   font-size: 12px;
   font-weight: 700;
-}
-
-.month-head b {
-  display: inline-flex;
-  align-items: center;
-  height: 24px;
-  border-radius: 7px;
-  padding: 0 8px;
-  color: #fff;
-  background: #3b82f6;
-  font-size: 11px;
 }
 
 .working-box {
@@ -685,10 +626,6 @@ textarea {
 
   nav {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .db-card {
-    display: none;
   }
 
   .page-grid,
