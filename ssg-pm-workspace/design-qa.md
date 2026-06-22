@@ -5,7 +5,11 @@
 - Removed bundled internal reference JSON from the frontend.
 - Removed tracked generated screenshots/reference visuals from the repository.
 - Added top-right English / Chinese language switch.
+- Added Plane-like module switching for Dashboard, Portfolio, Projects, Work Items, Cycles, Resources, Timeline, BCPF Map, Pages, Reports, and Settings.
+- Added fiscal-year monthly standard available person-day configuration in Settings.
+- Reduced the language switch to a compact 32 x 28px toolbar control.
 - Verified empty workspace state, member creation, project creation, work item creation, allocation editing, status updates, comments, and export feedback.
+- Verified left navigation changes the main module content.
 - Verified production build with `npm run build`.
 
 **Notes**

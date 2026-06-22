@@ -152,6 +152,12 @@ const I18N = {
     urgent: "Urgent",
     aboveLine: "Above the Line",
     belowLine: "Below the Line",
+    fiscalCapacity: "Fiscal Capacity",
+    standardDays: "Standard days",
+    standardDaysHint: "Configure the default available person-days for each fiscal month.",
+    moduleHint: "This module is ready for workflow-specific data.",
+    itemCount: "items",
+    noWorkItems: "No work items yet",
   },
   zh: {
     workspace: "SSG 项目工作台",
@@ -258,6 +264,12 @@ const I18N = {
     urgent: "紧急",
     aboveLine: "线内",
     belowLine: "线下",
+    fiscalCapacity: "财年人天",
+    standardDays: "标准人天",
+    standardDaysHint: "配置财年内每个月默认可用人天。",
+    moduleHint: "该模块已预留业务数据入口。",
+    itemCount: "项",
+    noWorkItems: "暂无工作项",
   },
 };
 
@@ -324,6 +336,13 @@ function loadWorkspace() {
   }
 }
 
+function defaultStandardDays() {
+  return MONTHS.reduce((acc, value) => {
+    acc[value] = 20;
+    return acc;
+  }, {});
+}
+
 function Badge({ children, tone = "neutral" }) {
   return <span className={`badge badge-${tone}`}>{children}</span>;
 }
@@ -388,6 +407,7 @@ export function App() {
   const [projects, setProjects] = useState(saved?.projects || []);
   const [workItems, setWorkItems] = useState(saved?.workItems || []);
   const [allocations, setAllocations] = useState(saved?.allocations || {});
+  const [standardDays, setStandardDays] = useState(saved?.standardDays || defaultStandardDays());
   const [selectedId, setSelectedId] = useState(saved?.selectedId || "");
   const [modal, setModal] = useState(null);
   const [notice, setNotice] = useState("");
@@ -397,9 +417,9 @@ export function App() {
   useEffect(() => {
     localStorage.setItem(
       STORAGE_KEY,
-      JSON.stringify({ lang, periodMode, month, members, projects, workItems, allocations, selectedId }),
+      JSON.stringify({ lang, periodMode, month, members, projects, workItems, allocations, standardDays, selectedId }),
     );
-  }, [allocations, lang, members, month, periodMode, projects, selectedId, workItems]);
+  }, [allocations, lang, members, month, periodMode, projects, selectedId, standardDays, workItems]);
 
   const visibleProjects = useMemo(() => {
     const scoped = projectFilter === "all" ? projects : projects.filter((project) => project.id === projectFilter);
@@ -432,7 +452,8 @@ export function App() {
   }
 
   function memberCapacity(member) {
-    return periodMode === "fiscal" ? Number(member.capacity || 0) * 12 : Number(member.capacity || 0);
+    const monthly = Number(member.capacity || standardDays[month] || 0);
+    return periodMode === "fiscal" ? MONTHS.reduce((total, item) => total + Number(standardDays[item] || monthly), 0) : monthly;
   }
 
   function memberAllocated(memberId) {
@@ -481,7 +502,7 @@ export function App() {
       id: `${slug(name)}-${Date.now().toString(36)}`,
       name,
       role: String(form.get("role") || "").trim() || t("member"),
-      capacity: Number(form.get("capacity") || 20),
+      capacity: Number(form.get("capacity") || standardDays[month] || 20),
       color: COLORS[members.length % COLORS.length],
     };
     setMembers((current) => [...current, member]);
@@ -580,6 +601,8 @@ export function App() {
     }, {}),
   ).sort((a, b) => b[1] - a[1]);
   const hasCoreData = members.length > 0 || projects.length > 0 || workItems.length > 0;
+  const pageTitle = activeNav === "resources" ? t("resourceLedger") : t(activeNav);
+  const pageBreadcrumb = `${t("workspace")} / ${pageTitle}`;
 
   return (
     <div className="app-shell">
@@ -632,9 +655,9 @@ export function App() {
       <main className="workspace">
         <header className="topbar">
           <div className="title-group">
-            <span className="breadcrumb">{t("breadcrumb")}</span>
+            <span className="breadcrumb">{pageBreadcrumb}</span>
             <div className="title-line">
-              <h1>{t("resourceLedger")}</h1>
+              <h1>{pageTitle}</h1>
               <IconInfoCircle size={17} />
             </div>
           </div>
@@ -738,6 +761,8 @@ export function App() {
               <KpiCard icon={IconCircleCheck} label={t("readiness")} value={`${readiness}%`} note={`${readyCount} / ${workItems.length}`} tone="green" />
             </div>
 
+            {activeNav === "resources" ? (
+              <>
             {!hasCoreData ? (
               <section className="empty-workspace">
                 <h2>{t("noData")}</h2>
@@ -949,6 +974,24 @@ export function App() {
               <b>{t("allocated")}: {totalAllocated}d</b>
               <b className={totalAllocated > totalCapacity ? "danger-text" : ""}>{t("remaining")}: {totalCapacity - totalAllocated}d</b>
             </section>
+              </>
+            ) : (
+              <ModulePage
+                activeNav={activeNav}
+                t={t}
+                lang={lang}
+                members={members}
+                projects={projects}
+                workItems={workItems}
+                bcpfTotals={bcpfTotals}
+                month={month}
+                standardDays={standardDays}
+                setStandardDays={setStandardDays}
+                setModal={setModal}
+                setSelectedId={setSelectedId}
+                setActiveNav={setActiveNav}
+              />
+            )}
           </section>
 
           <aside className="detail-rail">
@@ -1091,6 +1134,185 @@ function Modal({ title, subtitle, onClose, children }) {
         </div>
         {children}
       </section>
+    </div>
+  );
+}
+
+function ModulePage({ activeNav, t, lang, members, projects, workItems, bcpfTotals, month, standardDays, setStandardDays, setModal, setSelectedId, setActiveNav }) {
+  if (activeNav === "settings") {
+    return (
+      <section className="module-page">
+        <div className="module-head">
+          <div>
+            <h2>{t("fiscalCapacity")}</h2>
+            <p>{t("standardDaysHint")}</p>
+          </div>
+          <button className="ghost-btn" type="button" onClick={() => setModal("member")}>
+            <IconPlus size={17} />
+            {t("addMember")}
+          </button>
+        </div>
+        <div className="settings-grid">
+          {MONTHS.map((item) => (
+            <label key={item} className="month-capacity-card">
+              <span>{monthLabel(item, lang)}</span>
+              <input
+                type="number"
+                min="0"
+                max="31"
+                value={standardDays[item] ?? 20}
+                onChange={(event) => setStandardDays((current) => ({ ...current, [item]: Number(event.target.value || 0) }))}
+              />
+              <small>{t("standardDays")}</small>
+            </label>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  if (activeNav === "projects" || activeNav === "portfolio") {
+    return (
+      <section className="module-page">
+        <div className="module-head">
+          <div>
+            <h2>{t(activeNav)}</h2>
+            <p>{projects.length} {t("projects")}</p>
+          </div>
+          <button className="primary-btn" type="button" onClick={() => setModal("project")}>
+            <IconPlus size={17} />
+            {t("addProject")}
+          </button>
+        </div>
+        <div className="object-grid">
+          {projects.length ? projects.map((project) => (
+            <article key={project.id} className="object-card">
+              <i style={{ "--dot": project.color }} />
+              <h3>{project.name}</h3>
+              <p>{project.domain || "-"}</p>
+              <dl>
+                <div><dt>{t("budget")}</dt><dd>{money(project.budget)}</dd></div>
+                <div><dt>{t("workItems")}</dt><dd>{workItems.filter((item) => item.projectId === project.id).length}</dd></div>
+                <div><dt>{t("lineStatus")}</dt><dd>{t(project.lineStatus)}</dd></div>
+              </dl>
+            </article>
+          )) : <EmptyInline t={t} action={() => setModal("project")} label={t("addProject")} />}
+        </div>
+      </section>
+    );
+  }
+
+  if (activeNav === "workItems") {
+    return (
+      <section className="module-page">
+        <div className="module-head">
+          <div>
+            <h2>{t("workItems")}</h2>
+            <p>{workItems.length} {t("itemCount")}</p>
+          </div>
+          <button className="primary-btn" type="button" onClick={() => setModal("workItem")} disabled={!projects.length}>
+            <IconPlus size={17} />
+            {t("newWorkItem")}
+          </button>
+        </div>
+        <div className="work-list">
+          {workItems.length ? workItems.map((item) => (
+            <button key={item.id} className="work-row" type="button" onClick={() => { setSelectedId(item.id); setActiveNav("resources"); }}>
+              <div>
+                <strong>{item.title}</strong>
+                <span>{item.projectName || "-"} / {item.domain || "-"}</span>
+              </div>
+              <Badge tone={STATUS_META[item.status]?.tone}>{t(item.status)}</Badge>
+              <Badge tone={PRIORITY_META[item.priority]?.tone}>{t(item.priority)}</Badge>
+            </button>
+          )) : <EmptyInline t={t} action={() => setModal("workItem")} label={t("newWorkItem")} text={t("noWorkItems")} disabled={!projects.length} />}
+        </div>
+      </section>
+    );
+  }
+
+  if (activeNav === "cycles" || activeNav === "timeline") {
+    return (
+      <section className="module-page">
+        <div className="module-head">
+          <div>
+            <h2>{t(activeNav)}</h2>
+            <p>{monthLabel(month, lang)} / FY26-27</p>
+          </div>
+        </div>
+        <div className="month-grid">
+          {MONTHS.map((item) => (
+            <article key={item} className={item === month ? "month-card active" : "month-card"}>
+              <strong>{monthLabel(item, lang)}</strong>
+              <span>{standardDays[item] ?? 20}d {t("available")}</span>
+              <small>{workItems.filter((work) => work.due === item).length} {t("workItems")}</small>
+            </article>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  if (activeNav === "bcpf") {
+    return (
+      <section className="module-page">
+        <div className="module-head">
+          <div>
+            <h2>{t("bcpf")}</h2>
+            <p>{t("budgetByDomain")}</p>
+          </div>
+        </div>
+        <div className="object-grid">
+          {bcpfTotals.length ? bcpfTotals.map(([domain, value], index) => (
+            <article key={domain} className="object-card">
+              <i style={{ "--dot": COLORS[index % COLORS.length] }} />
+              <h3>{domain}</h3>
+              <p>{money(value)}</p>
+            </article>
+          )) : <EmptyInline t={t} />}
+        </div>
+      </section>
+    );
+  }
+
+  if (activeNav === "reports" || activeNav === "dashboard") {
+    return (
+      <section className="module-page">
+        <div className="module-head">
+          <div>
+            <h2>{t(activeNav)}</h2>
+            <p>{t("moduleHint")}</p>
+          </div>
+          <button className="ghost-btn" type="button" onClick={() => setActiveNav("resources")}>{t("resources")}</button>
+        </div>
+        <div className="report-grid">
+          <article><strong>{t("weeklySteering")}</strong><span>{workItems.length} {t("workItems")}</span></article>
+          <article><strong>{t("riskQueue")}</strong><span>{workItems.filter((item) => item.status === "blocked").length} {t("blocked")}</span></article>
+          <article><strong>{t("fiscalCapacity")}</strong><span>{MONTHS.reduce((total, item) => total + Number(standardDays[item] || 0), 0)}d</span></article>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="module-page">
+      <div className="module-head">
+        <div>
+          <h2>{t(activeNav)}</h2>
+          <p>{t("moduleHint")}</p>
+        </div>
+      </div>
+      <EmptyInline t={t} />
+    </section>
+  );
+}
+
+function EmptyInline({ t, action, label, text, disabled }) {
+  return (
+    <div className="inline-empty">
+      <h3>{text || t("noData")}</h3>
+      <p>{t("noDataBody")}</p>
+      {action ? <button className="primary-btn" type="button" onClick={action} disabled={disabled}>{label}</button> : null}
     </div>
   );
 }
