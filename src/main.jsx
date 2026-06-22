@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   BarChart3,
@@ -13,7 +13,6 @@ import {
   LayoutDashboard,
   ListChecks,
   Plus,
-  RefreshCw,
   Search,
   Settings2,
   Users,
@@ -21,7 +20,27 @@ import {
 import "./styles.css";
 
 const STORAGE_KEY = "pm-lite-workspace-v1";
-const MONTHS = ["FY26-04", "FY26-05", "FY26-06", "FY26-07", "FY26-08", "FY26-09", "FY26-10", "FY26-11", "FY26-12", "FY27-01", "FY27-02", "FY27-03"];
+const FISCAL_YEAR = {
+  id: "FY2627",
+  start: "2026-04-01",
+  end: "2027-03-31",
+};
+const MONTHS = [
+  { id: "2026-04", year: 2026, month: 3 },
+  { id: "2026-05", year: 2026, month: 4 },
+  { id: "2026-06", year: 2026, month: 5 },
+  { id: "2026-07", year: 2026, month: 6 },
+  { id: "2026-08", year: 2026, month: 7 },
+  { id: "2026-09", year: 2026, month: 8 },
+  { id: "2026-10", year: 2026, month: 9 },
+  { id: "2026-11", year: 2026, month: 10 },
+  { id: "2026-12", year: 2026, month: 11 },
+  { id: "2027-01", year: 2027, month: 0 },
+  { id: "2027-02", year: 2027, month: 1 },
+  { id: "2027-03", year: 2027, month: 2 },
+];
+const MONTH_IDS = MONTHS.map((item) => item.id);
+const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const STATUSES = ["planned", "active", "atRisk", "blocked", "done"];
 const RISKS = ["low", "medium", "high"];
 
@@ -40,10 +59,12 @@ const I18N = {
     projects: "Sub-projects",
     add: "Add",
     save: "Save",
-    sync: "Save to Netlify DB",
-    load: "Load DB",
-    local: "Local",
-    synced: "Synced",
+    local: "Local changes",
+    synced: "Saved",
+    saving: "Saving",
+    loading: "Loading",
+    offline: "Local fallback",
+    autoSave: "Auto-saves to Netlify Database",
     name: "Name",
     role: "Role",
     owner: "Owner",
@@ -75,8 +96,19 @@ const I18N = {
     all: "All",
     filter: "Filter",
     empty: "No data yet. Add configuration first.",
-    dbReady: "Netlify Database ready after deployment",
-    dbNote: "Local changes are saved in this browser. Use the database buttons after Netlify provisions the database.",
+    dbReady: "Netlify Database",
+    dbNote: "Workspace changes load automatically and are saved after edits.",
+    fiscalYear: "FY2627",
+    fiscalRange: "Apr 1, 2026 - Mar 31, 2027",
+    fiscalHint: "Click weekdays to mark public holidays. Click weekends to mark makeup workdays.",
+    ready12: "12 months ready",
+    workingDays: "Working days",
+    autoCalculated: "Auto-calculated",
+    weekday: "Weekday",
+    weekend: "Weekend",
+    publicHoliday: "Public holiday",
+    weekendWorkday: "Weekend workday",
+    activeMonth: "Active",
   },
   zh: {
     app: "项目管理平台",
@@ -92,10 +124,12 @@ const I18N = {
     projects: "子项目",
     add: "新增",
     save: "保存",
-    sync: "保存到 Netlify DB",
-    load: "读取数据库",
-    local: "本地",
-    synced: "已同步",
+    local: "本地修改",
+    synced: "已保存",
+    saving: "保存中",
+    loading: "读取中",
+    offline: "本地兜底",
+    autoSave: "自动保存到 Netlify Database",
     name: "名称",
     role: "角色",
     owner: "负责人",
@@ -127,19 +161,79 @@ const I18N = {
     all: "全部",
     filter: "筛选",
     empty: "暂无数据，请先完成基础配置。",
-    dbReady: "部署后自动接入 Netlify Database",
-    dbNote: "本地修改会保存在浏览器；Netlify 完成数据库初始化后可使用同步按钮。",
+    dbReady: "Netlify Database",
+    dbNote: "进入页面自动读取；任何修改会自动保存到数据库。",
+    fiscalYear: "FY2627",
+    fiscalRange: "2026年4月1日 - 2027年3月31日",
+    fiscalHint: "点击工作日标记为公休假期；点击周末标记为调休工作日。",
+    ready12: "12个月已就绪",
+    workingDays: "工作日",
+    autoCalculated: "自动计算",
+    weekday: "工作日",
+    weekend: "周末",
+    publicHoliday: "公休假期",
+    weekendWorkday: "周末调休",
+    activeMonth: "启用",
   },
 };
+
+function createFiscalCalendar() {
+  return MONTHS.map((item) => ({
+    ...item,
+    fiscalYear: FISCAL_YEAR.id,
+    holidays: [],
+    workdays: [],
+  }));
+}
 
 function blankWorkspace() {
   return {
     people: [],
     budgets: [],
-    calendar: MONTHS.map((id) => ({ id, standardDays: 20, locked: false })),
+    calendar: createFiscalCalendar(),
     portfolios: [],
     projects: [],
   };
+}
+
+function normalizeWorkspace(data) {
+  const fallback = blankWorkspace();
+  const workspace = { ...fallback, ...(data || {}) };
+  const calendarById = new Map((workspace.calendar || []).map((item) => [item.id, item]));
+  return {
+    ...workspace,
+    calendar: MONTHS.map((month) => {
+      const saved = calendarById.get(month.id) || calendarById.get(`FY${String(month.year).slice(2)}-${String(month.month + 1).padStart(2, "0")}`) || {};
+      return {
+        ...month,
+        fiscalYear: FISCAL_YEAR.id,
+        holidays: Array.isArray(saved.holidays) ? saved.holidays : [],
+        workdays: Array.isArray(saved.workdays) ? saved.workdays : [],
+      };
+    }),
+    projects: (workspace.projects || []).map((project) => ({
+      ...project,
+      month: MONTH_IDS.includes(project.month) ? project.month : convertLegacyMonth(project.month),
+    })),
+  };
+}
+
+function convertLegacyMonth(value) {
+  const legacy = {
+    "FY26-04": "2026-04",
+    "FY26-05": "2026-05",
+    "FY26-06": "2026-06",
+    "FY26-07": "2026-07",
+    "FY26-08": "2026-08",
+    "FY26-09": "2026-09",
+    "FY26-10": "2026-10",
+    "FY26-11": "2026-11",
+    "FY26-12": "2026-12",
+    "FY27-01": "2027-01",
+    "FY27-02": "2027-02",
+    "FY27-03": "2027-03",
+  };
+  return legacy[value] || "2026-04";
 }
 
 function uid(prefix) {
@@ -150,9 +244,42 @@ function money(value) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(Number(value || 0));
 }
 
+function monthLabel(month, lang = "zh") {
+  const date = new Date(month.year, month.month, 1);
+  return new Intl.DateTimeFormat(lang === "zh" ? "zh-CN" : "en-US", { month: "short", year: "numeric" }).format(date);
+}
+
+function dateKey(year, month, day) {
+  return `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+}
+
+function daysInMonth(year, month) {
+  return new Date(year, month + 1, 0).getDate();
+}
+
+function monthDays(month) {
+  const totalDays = daysInMonth(month.year, month.month);
+  const leadingBlanks = new Date(month.year, month.month, 1).getDay();
+  const days = Array.from({ length: totalDays }, (_, index) => {
+    const day = index + 1;
+    const date = new Date(month.year, month.month, day);
+    const key = dateKey(month.year, month.month, day);
+    const weekend = date.getDay() === 0 || date.getDay() === 6;
+    const publicHoliday = month.holidays.includes(key);
+    const weekendWorkday = month.workdays.includes(key);
+    const working = weekend ? weekendWorkday : !publicHoliday;
+    return { day, key, weekend, publicHoliday, weekendWorkday, working };
+  });
+  return [...Array.from({ length: leadingBlanks }, () => null), ...days];
+}
+
+function workingDayCount(month) {
+  return monthDays(month).filter((day) => day?.working).length;
+}
+
 function loadInitial() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || blankWorkspace();
+    return normalizeWorkspace(JSON.parse(localStorage.getItem(STORAGE_KEY)) || blankWorkspace());
   } catch {
     return blankWorkspace();
   }
@@ -164,12 +291,62 @@ function App() {
   const [configTab, setConfigTab] = useState("people");
   const [workspace, setWorkspace] = useState(loadInitial);
   const [filters, setFilters] = useState({ portfolioId: "all", ownerId: "all", status: "all", risk: "all", month: "all", query: "" });
-  const [syncState, setSyncState] = useState(I18N.zh.local);
+  const [syncState, setSyncState] = useState(I18N.zh.loading);
+  const [dbReady, setDbReady] = useState(false);
+  const saveTimer = useRef(null);
+  const saveGeneration = useRef(0);
   const t = (key) => I18N[lang][key] || key;
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(workspace));
   }, [workspace]);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadWorkspace() {
+      try {
+        const response = await fetch("/.netlify/functions/workspace");
+        if (!response.ok) throw new Error("Database function unavailable");
+        const payload = await response.json();
+        if (!cancelled && payload.data) setWorkspace(normalizeWorkspace(payload.data));
+        if (!cancelled) {
+          setDbReady(true);
+          setSyncState(I18N[lang].synced);
+        }
+      } catch {
+        if (!cancelled) {
+          setDbReady(false);
+          setSyncState(I18N[lang].offline);
+        }
+      }
+    }
+    loadWorkspace();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!dbReady) return undefined;
+    window.clearTimeout(saveTimer.current);
+    setSyncState(I18N[lang].saving);
+    const generation = saveGeneration.current + 1;
+    saveGeneration.current = generation;
+    saveTimer.current = window.setTimeout(async () => {
+      try {
+        const response = await fetch("/.netlify/functions/workspace", {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ data: workspace }),
+        });
+        if (!response.ok) throw new Error("Autosave failed");
+        if (saveGeneration.current === generation) setSyncState(I18N[lang].synced);
+      } catch {
+        if (saveGeneration.current === generation) setSyncState(I18N[lang].offline);
+      }
+    }, 700);
+    return () => window.clearTimeout(saveTimer.current);
+  }, [dbReady, lang, workspace]);
 
   const viewProjects = useMemo(() => {
     return workspace.projects.filter((project) => {
@@ -204,26 +381,6 @@ function App() {
       [type]: current[type].map((item) => (item.id === id ? { ...item, ...patch } : item)),
     }));
     setSyncState(t("local"));
-  }
-
-  async function syncToDb() {
-    setSyncState("Saving...");
-    const response = await fetch("/.netlify/functions/workspace", {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ data: workspace }),
-    });
-    if (!response.ok) throw new Error(await response.text());
-    setSyncState(t("synced"));
-  }
-
-  async function loadFromDb() {
-    setSyncState("Loading...");
-    const response = await fetch("/.netlify/functions/workspace");
-    if (!response.ok) throw new Error(await response.text());
-    const payload = await response.json();
-    if (payload.data) setWorkspace({ ...blankWorkspace(), ...payload.data });
-    setSyncState(t("synced"));
   }
 
   const nav = [
@@ -266,22 +423,20 @@ function App() {
           </div>
           <div className="actions">
             <button className="small" onClick={() => setLang(lang === "zh" ? "en" : "zh")}><Globe2 size={15} />{lang === "zh" ? "EN" : "中"}</button>
-            <button className="small" onClick={loadFromDb}><RefreshCw size={15} />{t("load")}</button>
-            <button className="primary" onClick={syncToDb}><Database size={15} />{t("sync")}</button>
-            <span className="sync">{syncState}</span>
+            <span className={dbReady ? "sync sync-ready" : "sync"}><Database size={14} />{syncState}</span>
           </div>
         </header>
 
-        {active === "dashboard" && <Dashboard t={t} metrics={metrics} workspace={workspace} projects={viewProjects} />}
-        {active === "config" && <Config t={t} tab={configTab} setTab={setConfigTab} workspace={workspace} addRecord={addRecord} updateRecord={updateRecord} />}
+        {active === "dashboard" && <Dashboard t={t} lang={lang} metrics={metrics} workspace={workspace} projects={viewProjects} />}
+        {active === "config" && <Config t={t} lang={lang} tab={configTab} setTab={setConfigTab} workspace={workspace} addRecord={addRecord} updateRecord={updateRecord} />}
         {active === "operations" && <Operations t={t} workspace={workspace} addRecord={addRecord} updateRecord={updateRecord} />}
-        {active === "reports" && <Reports t={t} workspace={workspace} filters={filters} setFilters={setFilters} projects={viewProjects} metrics={metrics} />}
+        {active === "reports" && <Reports t={t} lang={lang} workspace={workspace} filters={filters} setFilters={setFilters} projects={viewProjects} metrics={metrics} />}
       </main>
     </div>
   );
 }
 
-function Dashboard({ t, metrics, workspace, projects }) {
+function Dashboard({ t, lang, metrics, workspace, projects }) {
   return (
     <section className="page-grid">
       <Metric icon={CircleDollarSign} label={t("totalBudget")} value={money(metrics.totalBudget)} />
@@ -295,14 +450,14 @@ function Dashboard({ t, metrics, workspace, projects }) {
       <section className="panel">
         <PanelTitle title={t("calendar")} icon={CalendarDays} />
         <div className="month-list">
-          {workspace.calendar.map((item) => <span key={item.id}>{item.id}<b>{item.standardDays}d</b></span>)}
+          {workspace.calendar.map((item) => <span key={item.id}>{monthLabel(item, lang)}<b>{workingDayCount(item)}d</b></span>)}
         </div>
       </section>
     </section>
   );
 }
 
-function Config({ t, tab, setTab, workspace, addRecord, updateRecord }) {
+function Config({ t, lang, tab, setTab, workspace, addRecord, updateRecord }) {
   const tabs = [["people", Users], ["budgets", CircleDollarSign], ["calendar", CalendarDays], ["portfolios", Layers3], ["projects", BriefcaseBusiness]];
   return (
     <section className="panel">
@@ -311,7 +466,7 @@ function Config({ t, tab, setTab, workspace, addRecord, updateRecord }) {
       </div>
       {tab === "people" && <PeopleConfig t={t} people={workspace.people} addRecord={addRecord} updateRecord={updateRecord} />}
       {tab === "budgets" && <BudgetConfig t={t} budgets={workspace.budgets} addRecord={addRecord} updateRecord={updateRecord} />}
-      {tab === "calendar" && <CalendarConfig t={t} calendar={workspace.calendar} updateRecord={updateRecord} />}
+      {tab === "calendar" && <CalendarConfig t={t} lang={lang} calendar={workspace.calendar} updateRecord={updateRecord} />}
       {tab === "portfolios" && <PortfolioConfig t={t} portfolios={workspace.portfolios} addRecord={addRecord} updateRecord={updateRecord} />}
       {tab === "projects" && <ProjectConfig t={t} workspace={workspace} addRecord={addRecord} updateRecord={updateRecord} />}
     </section>
@@ -354,16 +509,77 @@ function BudgetConfig({ t, budgets, addRecord, updateRecord }) {
   );
 }
 
-function CalendarConfig({ t, calendar, updateRecord }) {
+function CalendarConfig({ t, lang, calendar, updateRecord }) {
+  function toggleDay(month, day) {
+    if (!day) return;
+    if (day.weekend) {
+      const workdays = day.weekendWorkday ? month.workdays.filter((key) => key !== day.key) : [...month.workdays, day.key];
+      updateRecord("calendar", month.id, { workdays });
+      return;
+    }
+    const holidays = day.publicHoliday ? month.holidays.filter((key) => key !== day.key) : [...month.holidays, day.key];
+    updateRecord("calendar", month.id, { holidays });
+  }
+
   return (
-    <div className="cards month-cards">
-      {calendar.map((month) => (
-        <Card key={month.id}>
-          <strong>{month.id}</strong>
-          <label>{t("capacity")}</label>
-          <input type="number" value={month.standardDays} onChange={(e) => updateRecord("calendar", month.id, { standardDays: Number(e.target.value) })} />
-        </Card>
-      ))}
+    <div className="calendar-workspace">
+      <div className="fiscal-hero">
+        <div>
+          <span className="eyebrow">{t("fiscalYear")}</span>
+          <h2>{t("fiscalRange")}</h2>
+          <p>{t("fiscalHint")}</p>
+        </div>
+        <div className="calendar-legend">
+          <span><i className="dot weekday" />{t("weekday")}</span>
+          <span><i className="dot weekend" />{t("weekend")}</span>
+          <span><i className="dot holiday" />{t("publicHoliday")}</span>
+          <span><i className="dot makeup" />{t("weekendWorkday")}</span>
+        </div>
+        <b>{t("ready12")}</b>
+      </div>
+      <div className="calendar-grid">
+        {calendar.map((month) => (
+          <article className="month-card" key={month.id}>
+            <div className="month-head">
+              <div>
+                <h3>{monthLabel(month, lang)}</h3>
+                <span>{t("fiscalYear")}</span>
+              </div>
+              <b>{t("activeMonth")}</b>
+            </div>
+            <div className="working-box">
+              <div>
+                <strong>{t("workingDays")}</strong>
+                <small>{t("autoCalculated")}</small>
+              </div>
+              <output>{workingDayCount(month)}</output>
+            </div>
+            <div className="weekday-row">
+              {WEEKDAYS.map((day) => <span key={day}>{day}</span>)}
+            </div>
+            <div className="day-grid">
+              {monthDays(month).map((day, index) => (
+                day ? (
+                  <button
+                    key={day.key}
+                    className={[
+                      "day-cell",
+                      day.weekend ? "is-weekend" : "is-weekday",
+                      day.publicHoliday ? "is-holiday" : "",
+                      day.weekendWorkday ? "is-makeup" : "",
+                    ].filter(Boolean).join(" ")}
+                    type="button"
+                    onClick={() => toggleDay(month, day)}
+                    title={day.weekend ? t("weekendWorkday") : t("publicHoliday")}
+                  >
+                    {day.day}
+                  </button>
+                ) : <span className="day-cell blank" key={`blank-${month.id}-${index}`} />
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   );
 }
@@ -412,7 +628,7 @@ function Operations({ t, workspace, addRecord, updateRecord }) {
   );
 }
 
-function Reports({ t, workspace, filters, setFilters, projects, metrics }) {
+function Reports({ t, lang, workspace, filters, setFilters, projects, metrics }) {
   const byStatus = STATUSES.map((status) => ({ status, count: projects.filter((item) => item.status === status).length }));
   return (
     <section className="page-grid">
@@ -437,7 +653,7 @@ function Reports({ t, workspace, filters, setFilters, projects, metrics }) {
           </select>
           <select value={filters.month} onChange={(e) => setFilters({ ...filters, month: e.target.value })}>
             <option value="all">{t("month")}: {t("all")}</option>
-            {MONTHS.map((item) => <option key={item} value={item}>{item}</option>)}
+            {MONTHS.map((item) => <option key={item.id} value={item.id}>{monthLabel(item, lang)}</option>)}
           </select>
           <input value={filters.query} placeholder={t("project")} onChange={(e) => setFilters({ ...filters, query: e.target.value })} />
         </div>
@@ -459,7 +675,7 @@ function Reports({ t, workspace, filters, setFilters, projects, metrics }) {
 }
 
 function ProjectForm({ t, workspace, onSubmit, compact }) {
-  const [form, setForm] = useState({ name: "", portfolioId: "", ownerId: "", budgetId: "", month: MONTHS[0], status: "planned", progress: 0, risk: "low", used: 0, detail: "" });
+  const [form, setForm] = useState({ name: "", portfolioId: "", ownerId: "", budgetId: "", month: MONTHS[0].id, status: "planned", progress: 0, risk: "low", used: 0, detail: "" });
   function set(key, value) {
     setForm((current) => ({ ...current, [key]: value }));
   }
@@ -484,7 +700,7 @@ function ProjectForm({ t, workspace, onSubmit, compact }) {
         <option value="">{t("budget")}</option>
         {workspace.budgets.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
       </select>
-      <select value={form.month} onChange={(e) => set("month", e.target.value)}>{MONTHS.map((item) => <option key={item}>{item}</option>)}</select>
+      <select value={form.month} onChange={(e) => set("month", e.target.value)}>{MONTHS.map((item) => <option key={item.id} value={item.id}>{item.id}</option>)}</select>
       <button className="primary" type="submit"><Plus size={16} />{t("add")}</button>
     </form>
   );
@@ -511,7 +727,7 @@ function ProjectEditCard({ t, project, workspace, update, operational }) {
         </select>
         <input type="number" value={project.used} placeholder={t("used")} onChange={(e) => update({ used: Number(e.target.value), updatedAt: new Date().toISOString() })} />
         <select value={project.month} onChange={(e) => update({ month: e.target.value, updatedAt: new Date().toISOString() })}>
-          {MONTHS.map((item) => <option key={item}>{item}</option>)}
+          {MONTHS.map((item) => <option key={item.id} value={item.id}>{item.id}</option>)}
         </select>
       </div>
       {operational ? <textarea value={project.detail} placeholder={t("detail")} onChange={(e) => update({ detail: e.target.value, updatedAt: new Date().toISOString() })} /> : null}

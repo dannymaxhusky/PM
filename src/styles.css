@@ -182,10 +182,24 @@ h1 {
 }
 
 .sync {
-  min-width: 64px;
+  min-width: 92px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid #d9e1ea;
+  border-radius: 8px;
+  background: #fff;
   color: #64748b;
   font-size: 12px;
   font-weight: 700;
+}
+
+.sync-ready {
+  border-color: #bbf7d0;
+  color: #166534;
+  background: #f0fdf4;
 }
 
 .page-grid {
@@ -310,10 +324,6 @@ textarea {
   gap: 12px;
 }
 
-.month-cards {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
 .card {
   display: grid;
   gap: 8px;
@@ -410,6 +420,222 @@ textarea {
   font-size: 13px;
 }
 
+.calendar-workspace {
+  display: grid;
+  gap: 16px;
+}
+
+.fiscal-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid #d9e1ea;
+  border-radius: 8px;
+  padding: 16px;
+  background: #f8fbff;
+}
+
+.fiscal-hero h2 {
+  margin-top: 4px;
+  font-size: 18px;
+}
+
+.fiscal-hero p {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.fiscal-hero > b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  border-radius: 999px;
+  padding: 0 12px;
+  color: #1d4ed8;
+  background: #dbeafe;
+  font-size: 12px;
+}
+
+.calendar-legend {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 8px 14px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.calendar-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+  border-radius: 999px;
+}
+
+.dot.weekday {
+  background: #06b6d4;
+}
+
+.dot.weekend {
+  background: #e2e8f0;
+}
+
+.dot.holiday {
+  background: #fecdd3;
+}
+
+.dot.makeup {
+  background: #bfdbfe;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.month-card {
+  display: grid;
+  gap: 12px;
+  border: 1px solid #d9e1ea;
+  border-radius: 8px;
+  padding: 14px;
+  background: #f8fbff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+}
+
+.month-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.month-head h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.month-head span {
+  display: block;
+  margin-top: 5px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.month-head b {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  border-radius: 7px;
+  padding: 0 8px;
+  color: #fff;
+  background: #3b82f6;
+  font-size: 11px;
+}
+
+.working-box {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 68px;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #d9e1ea;
+  border-radius: 8px;
+  padding: 10px;
+  background: #f1f5f9;
+}
+
+.working-box strong,
+.working-box small {
+  display: block;
+}
+
+.working-box strong {
+  font-size: 12px;
+}
+
+.working-box small {
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.working-box output {
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  color: #475569;
+  background: #fff;
+  font-weight: 800;
+}
+
+.weekday-row,
+.day-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.weekday-row span {
+  color: #64748b;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.day-cell {
+  aspect-ratio: 1;
+  min-width: 0;
+  height: auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  padding: 0;
+  color: #0f172a;
+  background: #06b6d4;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.day-cell:hover {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #dbeafe;
+}
+
+.day-cell.is-weekend {
+  color: #64748b;
+  background: #e2e8f0;
+}
+
+.day-cell.is-holiday {
+  color: #9f1239;
+  background: #fecdd3;
+}
+
+.day-cell.is-makeup {
+  color: #1e3a8a;
+  background: #bfdbfe;
+}
+
+.day-cell.blank {
+  pointer-events: none;
+  background: transparent;
+}
+
 .bars {
   display: grid;
   gap: 12px;
@@ -467,10 +693,14 @@ textarea {
 
   .page-grid,
   .cards,
-  .month-cards,
+  .calendar-grid,
   .crud-form,
   .project-form,
   .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .fiscal-hero {
     grid-template-columns: 1fr;
   }
 
